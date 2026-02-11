@@ -535,22 +535,6 @@ export default function PlantWellnessQuiz() {
   const vitalityScores = vitalityDimensions.map((d) => ({ ...d, score: getVitalityScore(d.question) }));
   const overallVitality = vitalityScores.length ? Math.round(vitalityScores.reduce((s, d) => s + d.score, 0) / vitalityScores.length) : 0;
 
-  // Log quiz completion to Google Sheets
-  useEffect(() => {
-    if (result) {
-      fetch("/api/save-completion", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          plantType: result.primary.name,
-          plantCore: result.primary.core,
-          habitat: result.habitat.name,
-          vitality: overallVitality,
-          timestamp: new Date().toISOString(),
-        }),
-      }).catch(() => {}); // Silently fail
-    }
-  }, [result]);
 
   const getHealthLabel = (s) => { if (s >= 80) return "Thriving"; if (s >= 55) return "Growing"; if (s >= 30) return "Needs care"; return "Dormant"; };
   const getHealthColor = (s) => { if (s >= 80) return "#6cc4a4"; if (s >= 55) return "#e8c44c"; if (s >= 30) return "#e8a87c"; return "#c490b8"; };
