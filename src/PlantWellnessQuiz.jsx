@@ -602,28 +602,22 @@ export default function PlantWellnessQuiz() {
     return pdf;
   };
 
-  const handleSendEmail = async (e) => {
+  const handleEmailSignup = async (e) => {
     e.preventDefault();
     if (!email || !email.includes("@")) return;
 
     setEmailStatus("sending");
 
     try {
-      // Send results data to API endpoint
-      const response = await fetch("/api/send-email", {
+      // Save email to waitlist via API endpoint
+      const response = await fetch("/api/save-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
-          plantName: result.primary.name,
-          plantIcon: result.primary.icon,
-          plantCore: result.primary.core,
-          plantDescription: result.primary.description,
-          habitatName: result.habitat.name,
-          habitatIcon: result.habitat.icon,
-          reflection: result.primary.reflection,
-          habits: result.primary.habits,
-          overallVitality,
+          plantType: result.primary.name,
+          source: "blood_wellness_waitlist",
+          timestamp: new Date().toISOString(),
         }),
       });
 
@@ -631,14 +625,14 @@ export default function PlantWellnessQuiz() {
 
       if (!response.ok) {
         console.error("API error:", data);
-        throw new Error(data.error || data.details || "Failed to send email");
+        throw new Error(data.error || data.details || "Failed to join waitlist");
       }
 
       setEmailStatus("sent");
       setEmail("");
       setTimeout(() => setEmailStatus(null), 5000);
     } catch (err) {
-      console.error("Email error:", err);
+      console.error("Signup error:", err);
       setEmailStatus("error");
       setTimeout(() => setEmailStatus(null), 4000);
     }
@@ -1130,11 +1124,11 @@ export default function PlantWellnessQuiz() {
             </div>
             {/* End of resultsRef */}
 
-            {/* Email Results */}
+            {/* Waitlist Signup */}
             <div className="email-section">
-              <div className="email-title">Email Your Results</div>
-              <p className="email-sub">Get your plant wellness results sent to your inbox</p>
-              <form onSubmit={handleSendEmail} className="email-form">
+              <div className="email-title">🩸 Join the Blood Wellness Waitlist</div>
+              <p className="email-sub">Be the first to know when our blood wellness panel launches — personalized insights based on your unique biology.</p>
+              <form onSubmit={handleEmailSignup} className="email-form">
                 <input
                   type="email"
                   placeholder="your@email.com"
@@ -1144,14 +1138,14 @@ export default function PlantWellnessQuiz() {
                   required
                 />
                 <button type="submit" className="email-btn" disabled={emailStatus === "sending"}>
-                  {emailStatus === "sending" ? "Sending..." : emailStatus === "sent" ? "Sent!" : "Email Results"}
+                  {emailStatus === "sending" ? "Joining..." : emailStatus === "sent" ? "Joined!" : "Join Waitlist"}
                 </button>
               </form>
               {emailStatus === "sent" && (
-                <p className="email-success">Check your inbox! Your results are on the way.</p>
+                <p className="email-success">You're on the list! We'll be in touch soon.</p>
               )}
               {emailStatus === "error" && (
-                <p className="email-error">Couldn't send email. Please try again.</p>
+                <p className="email-error">Something went wrong. Please try again.</p>
               )}
             </div>
 
