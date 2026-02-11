@@ -631,15 +631,18 @@ export default function PlantWellnessQuiz() {
         }),
       });
 
+      const data = await response.json().catch(() => ({}));
+
       if (!response.ok) {
-        throw new Error("Failed to send email");
+        console.error("API error:", data);
+        throw new Error(data.error || data.details || "Failed to send email");
       }
 
       setEmailStatus("sent");
       setEmail("");
       setTimeout(() => setEmailStatus(null), 5000);
     } catch (err) {
-      console.error(err);
+      console.error("Email error:", err);
       setEmailStatus("error");
       setTimeout(() => setEmailStatus(null), 4000);
     }
