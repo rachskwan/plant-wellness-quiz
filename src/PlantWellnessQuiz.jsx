@@ -826,30 +826,30 @@ export default function PlantWellnessQuiz() {
         .opt-emo { font-size: 1.2rem; width: 32px; text-align: center; flex-shrink: 0; }
         .back { background: none; border: none; color: rgba(30,30,30,0.35); font-size: 0.82rem; cursor: pointer; margin-top: 16px; padding: 6px 0; }
         .back:hover { color: rgba(30,30,30,0.6); }
-        .glass { background: rgba(255,255,255,0.9); backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.08); border-radius: 24px; padding: 32px 28px; margin-bottom: 20px; position: relative; overflow: hidden; }
-        .glass-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+        .glass { background: #ffffff; border-radius: 24px; padding: 32px 28px; margin-bottom: 20px; position: relative; box-shadow: 0 2px 16px rgba(0,0,0,0.04); }
+        .glass-accent { display: none; }
         .res-icon { font-size: 3rem; margin-bottom: 16px; display: block; }
         .res-you { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 4px; }
         .res-name { font-size: 2rem; font-weight: 700; color: #2a2a2a; margin-bottom: 4px; }
         .res-core { font-size: 0.82rem; margin-bottom: 16px; }
         .res-desc { font-size: 0.9rem; color: rgba(30,30,30,0.7); line-height: 1.75; margin-bottom: 20px; }
-        .fun-fact { display: flex; gap: 12px; padding: 16px; border-radius: 14px; background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .fun-fact { display: flex; gap: 12px; padding: 16px; border-radius: 14px; background: rgba(0,0,0,0.02); margin-bottom: 20px; }
         .fun-fact-icon { font-size: 1.2rem; flex-shrink: 0; }
         .fun-fact-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
         .fun-fact-text { font-size: 0.82rem; color: rgba(30,30,30,0.55); line-height: 1.65; }
-        .reflect { padding: 16px 20px; border-radius: 14px; border-left: 3px solid; margin-bottom: 20px; }
+        .reflect { padding: 16px 20px; border-radius: 14px; margin-bottom: 20px; }
         .reflect-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; }
         .reflect-text { font-size: 1rem; font-weight: 500; color: #2a2a2a; line-height: 1.45; }
         .hab { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; }
         .hab-dot { width: 5px; height: 5px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
         .hab-text { font-size: 0.86rem; color: rgba(30,30,30,0.6); line-height: 1.5; }
-        .resilience-box { margin-top: 24px; padding: 20px; border-radius: 16px; background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.05); }
+        .resilience-box { margin-top: 24px; padding: 20px; border-radius: 16px; background: rgba(0,0,0,0.02); }
         .resilience-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
         .resilience-icon { font-size: 1rem; }
         .resilience-title { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
         .resilience-badge { font-size: 0.55rem; font-weight: 600; padding: 2px 8px; border-radius: 100px; text-transform: uppercase; margin-left: auto; }
         .resilience-text { font-size: 0.86rem; color: rgba(30,30,30,0.6); line-height: 1.75; }
-        .habitat-card { border-radius: 20px; overflow: hidden; border: 1px solid rgba(0,0,0,0.08); margin-bottom: 20px; background: rgba(255,255,255,0.9); }
+        .habitat-card { border-radius: 24px; overflow: hidden; margin-bottom: 20px; background: #ffffff; box-shadow: 0 2px 16px rgba(0,0,0,0.04); }
         .habitat-banner { padding: 24px; position: relative; }
         .habitat-eyebrow { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
         .habitat-name { font-size: 1.4rem; font-weight: 700; color: #2a2a2a; margin-bottom: 4px; }
@@ -858,13 +858,13 @@ export default function PlantWellnessQuiz() {
         .habitat-desc { font-size: 0.86rem; color: rgba(30,30,30,0.6); line-height: 1.75; padding-top: 16px; }
         .habitat-section { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 20px; margin-bottom: 8px; }
         .habitat-detail { font-size: 0.82rem; color: rgba(30,30,30,0.55); line-height: 1.65; }
-        .habitat-callout { padding: 12px 14px; border-radius: 10px; margin-top: 8px; border-left: 2px solid; }
+        .habitat-callout { padding: 12px 14px; border-radius: 10px; margin-top: 8px; }
         .habitat-companions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
-        .habitat-companion { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 100px; background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.08); font-size: 0.74rem; font-weight: 500; color: rgba(30,30,30,0.55); }
-        .habitat-companion.you { border-color: rgba(74,168,124,0.3); color: rgba(30,30,30,0.7); }
-        .season-card { background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; padding: 16px 18px; margin-bottom: 10px; cursor: pointer; transition: all 0.25s; }
+        .habitat-companion { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 100px; background: rgba(0,0,0,0.03); font-size: 0.74rem; font-weight: 500; color: rgba(30,30,30,0.55); }
+        .habitat-companion.you { background: rgba(74,168,124,0.1); color: rgba(30,30,30,0.7); }
+        .season-card { background: rgba(0,0,0,0.015); border-radius: 16px; padding: 16px 18px; margin-bottom: 10px; cursor: pointer; transition: all 0.25s; }
         .season-card:hover { background: rgba(0,0,0,0.03); }
-        .season-card.active { border-color: rgba(74,168,124,0.3); }
+        .season-card.active { background: rgba(74,168,124,0.06); }
         .season-header { display: flex; align-items: center; gap: 10px; }
         .season-icon { font-size: 1.3rem; }
         .season-info { flex: 1; }
@@ -878,7 +878,7 @@ export default function PlantWellnessQuiz() {
         .season-detail { font-size: 0.82rem; color: rgba(30,30,30,0.55); line-height: 1.7; }
         .vit-title { font-size: 1.3rem; font-weight: 600; color: #2a2a2a; margin-bottom: 4px; }
         .vit-sub { font-size: 0.8rem; color: rgba(30,30,30,0.45); margin-bottom: 20px; }
-        .vit-overall { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: rgba(0,0,0,0.02); border-radius: 16px; margin-bottom: 20px; border: 1px solid rgba(0,0,0,0.05); }
+        .vit-overall { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: rgba(0,0,0,0.02); border-radius: 16px; margin-bottom: 20px; }
         .vit-ov-icon { font-size: 1.8rem; }
         .vit-ov-label { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(30,30,30,0.4); margin-bottom: 4px; }
         .vit-ov-row { display: flex; align-items: baseline; gap: 8px; }
@@ -900,7 +900,7 @@ export default function PlantWellnessQuiz() {
         .vit-chev.open { transform: rotate(180deg); }
         .vit-expand { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease; padding: 0 12px 0 52px; }
         .vit-expand.open { max-height: 500px; opacity: 1; padding: 0 12px 16px 52px; }
-        .vit-insight { font-size: 0.84rem; line-height: 1.65; padding: 14px 18px; border-radius: 12px; border-left: 2px solid; color: rgba(30,30,30,0.7); }
+        .vit-insight { font-size: 0.84rem; line-height: 1.65; padding: 14px 18px; border-radius: 12px; color: rgba(30,30,30,0.7); }
         .vit-sep { height: 1px; background: rgba(0,0,0,0.02); margin: 0 12px; }
         .spec-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
         .spec-name { font-size: 0.74rem; color: rgba(30,30,30,0.45); width: 76px; text-align: right; flex-shrink: 0; }
@@ -908,7 +908,7 @@ export default function PlantWellnessQuiz() {
         .spec-fill { height: 100%; border-radius: 6px; transition: width 1.2s ease; }
         .spec-icon { font-size: 0.9rem; width: 22px; text-align: center; }
         .sec-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(30,30,30,0.35); margin: 24px 0 14px; }
-        .sec-card { background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.06); border-radius: 18px; padding: 20px 24px; margin-bottom: 12px; }
+        .sec-card { background: rgba(0,0,0,0.015); border-radius: 18px; padding: 20px 24px; margin-bottom: 12px; }
         .sec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
         .sec-ico { font-size: 1.5rem; }
         .sec-name { font-size: 1.1rem; font-weight: 600; color: #2a2a2a; }
@@ -982,7 +982,7 @@ export default function PlantWellnessQuiz() {
         .page-back:hover { color: rgba(30,30,30,0.7); }
         .page-title { font-size: 1.5rem; font-weight: 700; color: #2a2a2a; margin-bottom: 6px; }
         .page-sub { font-size: 0.84rem; color: rgba(30,30,30,0.5); line-height: 1.55; margin-bottom: 20px; }
-        .enc-full-card { background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; cursor: pointer; transition: all 0.2s; }
+        .enc-full-card { background: rgba(255,255,255,0.7); border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; cursor: pointer; transition: all 0.2s; }
         .enc-full-card:hover { background: rgba(255,255,255,0.95); }
         .enc-full-card.expanded { background: rgba(255,255,255,0.95); padding: 14px 16px; }
         .enc-full-header { display: flex; align-items: center; gap: 10px; }
@@ -995,8 +995,8 @@ export default function PlantWellnessQuiz() {
         .enc-full-cat-name { font-size: 0.82rem; font-weight: 700; color: rgba(30,30,30,0.7); margin-bottom: 2px; }
         .enc-full-cat-desc { font-size: 0.75rem; color: rgba(30,30,30,0.4); }
         .sem-full-level { background: rgba(255,255,255,0.8); border: 1px solid rgba(0,0,0,0.08); border-radius: 18px; padding: 22px; margin-bottom: 14px; }
-        .result-link { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.06); padding: 14px 16px; border-radius: 14px; cursor: pointer; transition: all 0.25s; color: rgba(30,30,30,0.35); margin-bottom: 10px; }
-        .result-link:hover { background: rgba(0,0,0,0.04); transform: translateX(4px); }
+        .result-link { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; background: rgba(0,0,0,0.02); padding: 14px 16px; border-radius: 14px; cursor: pointer; transition: all 0.25s; color: rgba(30,30,30,0.35); margin-bottom: 10px; }
+        .result-link:hover { background: rgba(0,0,0,0.05); transform: translateX(4px); }
         .result-link-icon { font-size: 1.2rem; }
         .result-link-text { flex: 1; }
         .result-link-title { font-size: 0.86rem; font-weight: 600; color: rgba(30,30,30,0.8); }
@@ -1362,7 +1362,7 @@ export default function PlantWellnessQuiz() {
                     const isYou = result && pk === result.primary.key;
                     const isExpanded = expandedPlant === pk;
                     return (
-                      <div key={pk} className={`enc-full-card ${isExpanded ? "expanded" : ""}`} onClick={() => setExpandedPlant(isExpanded ? null : pk)} style={isYou ? { borderColor: "rgba(74,168,124,0.35)", background: "rgba(74,168,124,0.06)" } : {}}>
+                      <div key={pk} className={`enc-full-card ${isExpanded ? "expanded" : ""}`} onClick={() => setExpandedPlant(isExpanded ? null : pk)} style={isYou ? { background: "rgba(74,168,124,0.08)" } : {}}>
                         <div className="enc-full-header">
                           <span className="enc-full-icon"><PlantIcon plantKey={pk} size={28} color={p.color} /></span>
                           <div style={{ flex: 1 }}>
@@ -1420,7 +1420,7 @@ export default function PlantWellnessQuiz() {
                 const isYourHabitat = result && result.habitat.key === h.key;
                 const isExpanded = expandedHabitat === h.key;
                 return (
-                  <div key={h.key} className={`enc-full-card ${isExpanded ? "expanded" : ""}`} onClick={() => setExpandedHabitat(isExpanded ? null : h.key)} style={isYourHabitat ? { borderColor: "rgba(74,168,124,0.35)", background: "rgba(74,168,124,0.06)" } : {}}>
+                  <div key={h.key} className={`enc-full-card ${isExpanded ? "expanded" : ""}`} onClick={() => setExpandedHabitat(isExpanded ? null : h.key)} style={isYourHabitat ? { background: "rgba(74,168,124,0.08)" } : {}}>
                     <div className="enc-full-header">
                       <span className="enc-full-icon"><HabitatIcon habitatKey={h.key} size={28} color={h.color} /></span>
                       <div style={{ flex: 1 }}>
