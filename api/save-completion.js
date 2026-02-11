@@ -20,7 +20,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const { plantType, plantCore, habitat, season, vitality, timestamp } = req.body;
+    const { plantType, plantCore, habitat, vitality, timestamp } = req.body;
 
     // Send to Google Sheets via Apps Script web app
     const response = await fetch(sheetUrl, {
@@ -30,7 +30,6 @@ module.exports = async function handler(req, res) {
         plantType: plantType || '',
         plantCore: plantCore || '',
         habitat: habitat || '',
-        season: season || '',
         vitality: vitality || '',
         timestamp: timestamp || new Date().toISOString(),
       }),

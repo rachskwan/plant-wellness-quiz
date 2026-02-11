@@ -545,7 +545,6 @@ export default function PlantWellnessQuiz() {
           plantType: result.primary.name,
           plantCore: result.primary.core,
           habitat: result.habitat.name,
-          season: result.season.name,
           vitality: overallVitality,
           timestamp: new Date().toISOString(),
         }),
