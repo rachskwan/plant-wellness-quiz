@@ -539,8 +539,9 @@ export default function PlantWellnessQuiz() {
   const getScoreDescription = (dim, score) => { if (score >= 80) return dim.thriving; if (score >= 55) return dim.growing; if (score >= 30) return dim.needsCare; return dim.dormant; };
 
   const handleShare = async () => {
-    const text = `🌱 I took the Plant Wellness Quiz and I'm a ${result.primary.icon} ${result.primary.name}!\n\n"${result.primary.reflection}"\n\nTake the quiz and find your plant type! 🌿`;
-    if (navigator.share) { try { await navigator.share({ title: `I'm a ${result.primary.name}!`, text }); } catch {} }
+    const quizUrl = window.location.origin;
+    const text = `🌱 I took the Plant Wellness Quiz and I'm a ${result.primary.icon} ${result.primary.name}!\n\n"${result.primary.reflection}"\n\nTake the quiz and find your plant type: ${quizUrl}`;
+    if (navigator.share) { try { await navigator.share({ title: `I'm a ${result.primary.name}!`, text, url: quizUrl }); } catch {} }
     else { try { await navigator.clipboard.writeText(text); setShareToast(true); setTimeout(() => setShareToast(false), 2500); } catch {} }
   };
 

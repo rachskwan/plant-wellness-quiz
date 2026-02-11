@@ -1,12 +1,12 @@
-import { Resend } from 'resend';
+const { Resend } = require('resend');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Handle CORS
-  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   if (req.method === 'OPTIONS') {
@@ -15,6 +15,12 @@ export default async function handler(req, res) {
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Check if API key is configured
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY is not configured');
+    return res.status(500).json({ error: 'Email service not configured' });
   }
 
   try {
@@ -52,12 +58,12 @@ export default async function handler(req, res) {
 
     if (error) {
       console.error('Resend error:', error);
-      return res.status(500).json({ error: 'Failed to send email' });
+      return res.status(500).json({ error: 'Failed to send email', details: error.message });
     }
 
     return res.status(200).json({ success: true, id: data.id });
   } catch (error) {
     console.error('Server error:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: 'Internal server error', details: error.message });
   }
-}
+};
