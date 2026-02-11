@@ -1516,6 +1516,11 @@ export default function PlantWellnessQuiz() {
               })}
             </div>
 
+            <div style={{ marginTop: 32, textAlign: "center" }}>
+              <button className="btn" onClick={() => { setCurrentQ(0); setAnswers({}); setSelectedOption(null); setChosenIndices({}); setStage("quiz"); }}>
+                Take the Quiz →
+              </button>
+            </div>
           </div>
         )}
 
@@ -1569,6 +1574,12 @@ export default function PlantWellnessQuiz() {
               <p style={{ fontSize: "0.86rem", color: "rgba(30,30,30,0.6)", lineHeight: 1.7 }}>
                 Traditional wellness advice focuses almost entirely on individual behavior—eat better, exercise more, sleep more. But the SEM shows that many factors affecting your health are outside your direct control. Understanding this can reduce self-blame and help you focus energy where it actually makes a difference.
               </p>
+            </div>
+
+            <div style={{ marginTop: 32, textAlign: "center" }}>
+              <button className="btn" onClick={() => { setCurrentQ(0); setAnswers({}); setSelectedOption(null); setChosenIndices({}); setStage("quiz"); }}>
+                Take the Quiz →
+              </button>
             </div>
           </div>
         )}
