@@ -8,7 +8,8 @@ import {
   Carrot, PottedPlant, Drop, Butterfly,
   Flask, Warning, Check, ArrowCounterClockwise,
   Path, CloudSun, CloudLightning, Wind, Signpost,
-  Binoculars, Timer, SunHorizon, Footprints
+  Binoculars, Timer, SunHorizon, Footprints,
+  Handshake, Fire, ShareNetwork
 } from "@phosphor-icons/react";
 
 // Question illustration icons and colors
@@ -79,6 +80,23 @@ const vitalityIcons = {
 // VitalityIcon component
 const VitalityIcon = ({ vitalityKey, size = 24, color, className = "" }) => {
   const IconComponent = vitalityIcons[vitalityKey];
+  if (!IconComponent) return <Plant size={size} weight="duotone" color={color} className={className} />;
+  return <IconComponent size={size} weight="duotone" color={color} className={className} />;
+};
+
+// Icon mapping for resilience types
+const resilienceIcons = {
+  "Physiological Adaptation": Drop,
+  "Environmental Sensitivity": Flask,
+  "Structural Resilience": Plant,
+  "Community & Ecosystem": Handshake,
+  "Reproductive & Regenerative": ArrowCounterClockwise,
+  "Network Resilience": ShareNetwork,
+  "Seasonal Resilience": Fire,
+};
+
+const ResilienceIcon = ({ resilienceType, size = 16, color, className = "" }) => {
+  const IconComponent = resilienceIcons[resilienceType];
   if (!IconComponent) return <Plant size={size} weight="duotone" color={color} className={className} />;
   return <IconComponent size={size} weight="duotone" color={color} className={className} />;
 };
@@ -1089,7 +1107,7 @@ export default function PlantWellnessQuiz() {
 
               <div className="resilience-box">
                 <div className="resilience-header">
-                  <span className="resilience-icon">{result.primary.resilienceIcon}</span>
+                  <span className="resilience-icon"><ResilienceIcon resilienceType={result.primary.resilienceType} size={16} color={result.primary.color} /></span>
                   <span className="resilience-title" style={{ color: result.primary.color }}>Your resilience</span>
                   <span className="resilience-badge" style={{ background: `${result.primary.color}18`, color: result.primary.color }}>{result.primary.resilienceType}</span>
                 </div>
