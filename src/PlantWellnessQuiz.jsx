@@ -971,7 +971,7 @@ export default function PlantWellnessQuiz() {
 
             <div className="intro-links">
               <button className="intro-link" onClick={() => goToPage("encyclopedia")}>
-                <span className="intro-link-icon">🌿</span>
+                <span className="intro-link-icon"><Plant size={20} weight="duotone" /></span>
                 <div className="intro-link-text">
                   <div className="intro-link-title">Garden Encyclopedia</div>
                   <div className="intro-link-sub">Explore all 12 plant types</div>
@@ -979,10 +979,10 @@ export default function PlantWellnessQuiz() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
               </button>
               <button className="intro-link" onClick={() => goToPage("sem")}>
-                <span className="intro-link-icon"><Flask size={16} weight="duotone" /></span>
+                <span className="intro-link-icon"><Flask size={20} weight="duotone" /></span>
                 <div className="intro-link-text">
-                  <div className="intro-link-title">The Science Behind This</div>
-                  <div className="intro-link-sub">Learn about the Socioecological Model</div>
+                  <div className="intro-link-title">What is the Socioecological Model?</div>
+                  <div className="intro-link-sub">The science behind this quiz</div>
                 </div>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
               </button>
@@ -1223,7 +1223,7 @@ export default function PlantWellnessQuiz() {
             {/* Learn More Links */}
             <div className="sec-label">Learn more</div>
             <button className="result-link" onClick={() => goToPage("encyclopedia")}>
-              <span className="result-link-icon">🌿</span>
+              <span className="result-link-icon"><Plant size={20} weight="duotone" /></span>
               <div className="result-link-text">
                 <div className="result-link-title">Garden Encyclopedia</div>
                 <div className="result-link-sub">Explore all 12 plant types</div>
@@ -1231,10 +1231,10 @@ export default function PlantWellnessQuiz() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
             </button>
             <button className="result-link" onClick={() => goToPage("sem")}>
-              <span className="result-link-icon"><Flask size={16} weight="duotone" /></span>
+              <span className="result-link-icon"><Flask size={20} weight="duotone" /></span>
               <div className="result-link-text">
-                <div className="result-link-title">The Science Behind This</div>
-                <div className="result-link-sub">Learn about the Socioecological Model</div>
+                <div className="result-link-title">What is the Socioecological Model?</div>
+                <div className="result-link-sub">The science behind this quiz</div>
               </div>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
             </button>
@@ -1288,7 +1288,7 @@ export default function PlantWellnessQuiz() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
               Back
             </button>
-            <h1 className="page-title">🌿 Garden Encyclopedia</h1>
+            <h1 className="page-title"><Plant size={24} weight="duotone" style={{ marginRight: 8, verticalAlign: "middle" }} /> Garden Encyclopedia</h1>
             <p className="page-sub">12 plant types, 4 habitats, 4 seasons. Tap any card to expand.</p>
 
             {/* Jump Navigation */}
@@ -1482,7 +1482,7 @@ export default function PlantWellnessQuiz() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
               Back
             </button>
-            <h1 className="page-title"><Flask size={24} weight="duotone" style={{ marginRight: 8, verticalAlign: "middle" }} /> The Science Behind This</h1>
+            <h1 className="page-title"><Flask size={24} weight="duotone" style={{ marginRight: 8, verticalAlign: "middle" }} /> What is the Socioecological Model?</h1>
             <p className="page-sub">This quiz is based on the Socioecological Model (SEM), a framework from public health that recognizes wellbeing is shaped by multiple levels—from individual choices to the systems we live within.</p>
 
             <div className="sem-diagram" style={{ marginBottom: 32 }}>
