@@ -6,8 +6,50 @@ import {
   Leaf, Plant, TreeEvergreen, FlowerLotus,
   Grains, Waves, Mountains, Sun, Snowflake,
   Carrot, PottedPlant, Drop, Butterfly,
-  Flask, Warning, Check, ArrowCounterClockwise
+  Flask, Warning, Check, ArrowCounterClockwise,
+  Path, CloudSun, CloudLightning, Wind, Signpost,
+  Binoculars, Timer, SunHorizon, Footprints
 } from "@phosphor-icons/react";
+
+// Question illustration icons and colors
+const questionIllustrations = [
+  { icon: Footprints, color: "#8b7355", bg: "#f5f0e8" },    // 1. The Trailhead
+  { icon: TreeEvergreen, color: "#4a7c59", bg: "#e8f5e9" }, // 2. Into the Trees
+  { icon: Waves, color: "#5c9ead", bg: "#e3f2fd" },         // 3. The Stream
+  { icon: CloudSun, color: "#e8b44c", bg: "#fff8e1" },      // 4. The Canopy
+  { icon: Flower, color: "#c490b8", bg: "#fce4ec" },        // 5. The Grove
+  { icon: CloudLightning, color: "#607d8b", bg: "#eceff1" },// 6. The Storm
+  { icon: Wind, color: "#78909c", bg: "#f5f5f5" },          // 7. The Aftermath
+  { icon: Signpost, color: "#8d6e63", bg: "#efebe9" },      // 8. The Fork
+  { icon: Mountains, color: "#795548", bg: "#efebe9" },     // 9. The Ridge
+  { icon: Binoculars, color: "#5d8a66", bg: "#e8f5e9" },    // 10. The Overlook
+  { icon: Waves, color: "#4a6fa5", bg: "#e3f2fd" },         // 11. The Valley
+  { icon: Timer, color: "#9c8340", bg: "#fff8e1" },         // 12. The Clearing
+  { icon: FlowerLotus, color: "#d4829c", bg: "#fce4ec" },   // 13. The Meadow
+  { icon: SunHorizon, color: "#e57c23", bg: "#fff3e0" },    // 14. The Horizon
+  { icon: Cactus, color: "#a07850", bg: "#fbe9e7" },        // 15. The Dry Season
+];
+
+// Question illustration component
+const QuestionIllustration = ({ questionIndex }) => {
+  const illus = questionIllustrations[questionIndex];
+  if (!illus) return null;
+  const IconComponent = illus.icon;
+  return (
+    <div style={{
+      width: "100%",
+      height: 120,
+      borderRadius: 16,
+      background: illus.bg,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      marginBottom: 24,
+    }}>
+      <IconComponent size={56} weight="duotone" color={illus.color} />
+    </div>
+  );
+};
 
 // Icon mapping for plants
 const plantIcons = {
@@ -996,6 +1038,7 @@ export default function PlantWellnessQuiz() {
               <div className="prog-track"><div className="prog-fill" style={{ width: `${progress}%` }} /></div>
               <div className="prog-label">{currentQ + 1}/{questions.length}</div>
             </div>
+            <QuestionIllustration questionIndex={currentQ} />
             <div className="q-tag">{questions[currentQ].section}</div>
             <p className="q-text">{questions[currentQ].question}</p>
             <div>
