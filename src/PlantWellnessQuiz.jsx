@@ -617,7 +617,7 @@ export default function PlantWellnessQuiz() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           service_id: "service_ikct7co",
-          template_id: "template_5an6s1r",
+          template_id: "template_95bru4a",
           user_id: "w8wRJKPqXMYhtwIhA",
           template_params: {
             to_email: email,
