@@ -1,6 +1,64 @@
 import { useState, useEffect, useRef } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import {
+  Cactus, FlowerTulip, TreePalm, Tree, OrangeSlice, Flower,
+  Leaf, Plant, TreeEvergreen, FlowerLotus,
+  Grains, Waves, Mountains, Sun, Snowflake
+} from "@phosphor-icons/react";
+
+// Icon mapping for plants
+const plantIcons = {
+  succulent: Cactus,
+  orchid: FlowerTulip,
+  bamboo: TreePalm,
+  oak: Tree,
+  fruitTree: OrangeSlice,
+  wildflower: Flower,
+  vine: Leaf,
+  moss: Plant,
+  bonsai: TreeEvergreen,
+  mushroom: null, // Keep emoji
+  maple: Leaf,
+  lotus: FlowerLotus,
+};
+
+// Icon mapping for habitats
+const habitatIcons = {
+  forestFloor: TreeEvergreen,
+  openMeadow: Grains,
+  riverbank: Waves,
+  rockyRidge: Mountains,
+};
+
+// Icon mapping for seasons
+const seasonIcons = {
+  spring: Plant,
+  summer: Sun,
+  autumn: Leaf,
+  winter: Snowflake,
+};
+
+// PlantIcon component
+const PlantIcon = ({ plantKey, size = 24, color, className = "" }) => {
+  const IconComponent = plantIcons[plantKey];
+  if (!IconComponent) return <span style={{ fontSize: size }}>{plantKey === "mushroom" ? "🍄" : "🌱"}</span>;
+  return <IconComponent size={size} weight="duotone" color={color} className={className} />;
+};
+
+// HabitatIcon component
+const HabitatIcon = ({ habitatKey, size = 24, color, className = "" }) => {
+  const IconComponent = habitatIcons[habitatKey];
+  if (!IconComponent) return <span style={{ fontSize: size }}>🌿</span>;
+  return <IconComponent size={size} weight="duotone" color={color} className={className} />;
+};
+
+// SeasonIcon component
+const SeasonIcon = ({ seasonKey, size = 24, color, className = "" }) => {
+  const IconComponent = seasonIcons[seasonKey];
+  if (!IconComponent) return <span style={{ fontSize: size }}>🌱</span>;
+  return <IconComponent size={size} weight="duotone" color={color} className={className} />;
+};
 
 const questions = [
   {
@@ -942,7 +1000,7 @@ export default function PlantWellnessQuiz() {
             {/* Primary Plant Card */}
             <div className="glass">
               <div className="glass-accent" style={{ background: `linear-gradient(90deg, ${result.primary.color}, ${result.primary.accent})` }} />
-              <span className="res-icon">{result.primary.icon}</span>
+              <span className="res-icon"><PlantIcon plantKey={result.primary.key} size={64} color={result.primary.color} /></span>
               <div className="res-you" style={{ color: result.primary.color }}>You are a</div>
               <h2 className="res-name">{result.primary.name}</h2>
               <div className="res-core" style={{ color: result.primary.color }}>{result.primary.core}</div>
@@ -984,7 +1042,7 @@ export default function PlantWellnessQuiz() {
               <div className="habitat-banner" style={{ background: `linear-gradient(135deg, ${result.habitat.color}15, ${result.habitat.accent}10)` }}>
                 <div className="habitat-eyebrow" style={{ color: result.habitat.color }}>Your habitat</div>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <span style={{ fontSize: "1.8rem" }}>{result.habitat.icon}</span>
+                  <span style={{ fontSize: "1.8rem" }}><HabitatIcon habitatKey={result.habitat.key} size={32} color={result.habitat.color} /></span>
                   <div>
                     <div className="habitat-name">{result.habitat.name}</div>
                     <div className="habitat-tagline">{result.habitat.tagline}</div>
@@ -1005,7 +1063,7 @@ export default function PlantWellnessQuiz() {
                 <div className="habitat-companions">
                   {result.habitat.plants.map((pk) => {
                     const p = plantProfiles[pk];
-                    return <span key={pk} className={`habitat-companion ${pk === result.primary.key ? "you" : ""}`}>{p.icon} {p.name} {pk === result.primary.key ? "(you)" : ""}</span>;
+                    return <span key={pk} className={`habitat-companion ${pk === result.primary.key ? "you" : ""}`}><PlantIcon plantKey={pk} size={16} color={p.color} /> {p.name} {pk === result.primary.key ? "(you)" : ""}</span>;
                   })}
                 </div>
               </div>
@@ -1021,7 +1079,7 @@ export default function PlantWellnessQuiz() {
                 return (
                   <div key={s.key} className={`season-card ${isOpen ? "active" : ""}`} onClick={() => setExpandedSeason(isOpen ? null : s.key)}>
                     <div className="season-header">
-                      <span className="season-icon">{s.icon}</span>
+                      <span className="season-icon"><SeasonIcon seasonKey={s.key} size={24} color={s.color} /></span>
                       <div className="season-info">
                         <div className="season-name">{s.name}</div>
                         <div className="season-tagline">{s.tagline}</div>
@@ -1124,7 +1182,7 @@ export default function PlantWellnessQuiz() {
                     <div className="spec-track">
                       <div className="spec-fill" style={{ width: resultRevealed ? `${pct}%` : "0%", background: `linear-gradient(90deg, ${p.color}, ${p.accent})`, transitionDelay: `${i * 0.1}s` }} />
                     </div>
-                    <div className="spec-icon">{p.icon}</div>
+                    <div className="spec-icon"><PlantIcon plantKey={key} size={20} color={p.color} /></div>
                   </div>
                 );
               })}
@@ -1135,7 +1193,7 @@ export default function PlantWellnessQuiz() {
             {[result.secondary, result.tertiary].map((p) => (
               <div className="sec-card" key={p.key}>
                 <div className="sec-head">
-                  <span className="sec-ico">{p.icon}</span>
+                  <span className="sec-ico"><PlantIcon plantKey={p.key} size={28} color={p.color} /></span>
                   <div>
                     <div className="sec-name">{p.name}</div>
                     <div className="sec-core">{p.core}</div>
@@ -1246,7 +1304,7 @@ export default function PlantWellnessQuiz() {
                     return (
                       <div key={pk} className={`enc-full-card ${isExpanded ? "expanded" : ""}`} onClick={() => setExpandedPlant(isExpanded ? null : pk)} style={isYou ? { borderColor: "rgba(74,168,124,0.35)", background: "rgba(74,168,124,0.06)" } : {}}>
                         <div className="enc-full-header">
-                          <span className="enc-full-icon">{p.icon}</span>
+                          <span className="enc-full-icon"><PlantIcon plantKey={pk} size={28} color={p.color} /></span>
                           <div style={{ flex: 1 }}>
                             <div className="enc-full-name">{p.name}{isYou ? " (You)" : ""}</div>
                             <div className="enc-full-core" style={{ color: p.color }}>{p.core}</div>
@@ -1285,7 +1343,7 @@ export default function PlantWellnessQuiz() {
                           </div>
 
                           <div style={{ marginTop: 12, fontSize: "0.72rem", color: "rgba(30,30,30,0.4)" }}>
-                            Habitat: {habitats[plantToHabitat[pk]].icon} {habitats[plantToHabitat[pk]].name}
+                            Habitat: <HabitatIcon habitatKey={plantToHabitat[pk]} size={14} color={habitats[plantToHabitat[pk]].color} /> {habitats[plantToHabitat[pk]].name}
                           </div>
                         </div>
                       </div>
@@ -1304,7 +1362,7 @@ export default function PlantWellnessQuiz() {
                 return (
                   <div key={h.key} className={`enc-full-card ${isExpanded ? "expanded" : ""}`} onClick={() => setExpandedHabitat(isExpanded ? null : h.key)} style={isYourHabitat ? { borderColor: "rgba(74,168,124,0.35)", background: "rgba(74,168,124,0.06)" } : {}}>
                     <div className="enc-full-header">
-                      <span className="enc-full-icon">{h.icon}</span>
+                      <span className="enc-full-icon"><HabitatIcon habitatKey={h.key} size={28} color={h.color} /></span>
                       <div style={{ flex: 1 }}>
                         <div className="enc-full-name">{h.name}{isYourHabitat ? " (Yours)" : ""}</div>
                         <div className="enc-full-core" style={{ color: h.color }}>{h.tagline}</div>
@@ -1340,7 +1398,7 @@ export default function PlantWellnessQuiz() {
                             const isYou = result && pk === result.primary.key;
                             return (
                               <span key={pk} style={{ display: "inline-flex", alignItems: "center", gap: 4, padding: "3px 8px", borderRadius: 100, background: isYou ? "rgba(74,168,124,0.1)" : "rgba(0,0,0,0.03)", border: isYou ? "1px solid rgba(74,168,124,0.25)" : "1px solid rgba(0,0,0,0.05)", fontSize: "0.68rem", color: "rgba(30,30,30,0.55)" }}>
-                                {p.icon} {p.name}
+                                <PlantIcon plantKey={pk} size={14} color={p.color} /> {p.name}
                               </span>
                             );
                           })}
@@ -1360,7 +1418,7 @@ export default function PlantWellnessQuiz() {
                 return (
                   <div key={s.key} className={`enc-full-card ${isExpanded ? "expanded" : ""}`} onClick={() => setExpandedEncSeason(isExpanded ? null : s.key)}>
                     <div className="enc-full-header">
-                      <span className="enc-full-icon">{s.icon}</span>
+                      <span className="enc-full-icon"><SeasonIcon seasonKey={s.key} size={28} color={s.color} /></span>
                       <div style={{ flex: 1 }}>
                         <div className="enc-full-name">{s.name}</div>
                         <div className="enc-full-core" style={{ color: s.color }}>{s.tagline}</div>
