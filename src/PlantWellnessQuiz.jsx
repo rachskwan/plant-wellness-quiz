@@ -835,14 +835,14 @@ export default function PlantWellnessQuiz() {
         .prog { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
         .prog-track { flex: 1; height: 4px; background: rgba(0,0,0,0.06); border-radius: 4px; overflow: hidden; }
         .prog-fill { height: 100%; background: linear-gradient(90deg, #4aa87c, #5a9db8); transition: width 0.5s; }
-        .prog-label { font-size: 0.72rem; color: rgba(30,30,30,0.4); }
+        .prog-label { font-size: 0.72rem; color: rgba(30,30,30,0.6); }
         .q-tag { display: inline-block; background: rgba(74,168,124,0.08); color: #3d9b78; padding: 4px 12px; border-radius: 100px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
         .q-text { font-size: 1.25rem; color: #2a2a2a; line-height: 1.5; margin-bottom: 28px; }
         .opt { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.08); padding: 16px 20px; border-radius: 16px; margin-bottom: 10px; cursor: pointer; transition: all 0.25s; font-size: 0.92rem; color: rgba(30,30,30,0.85); }
         .opt:hover { background: rgba(74,168,124,0.06); border-color: rgba(108,196,164,0.2); transform: translateX(4px); }
         .opt.sel { background: rgba(74,168,124,0.1); border-color: #3d9b78; transform: scale(0.98); }
         .opt-emo { font-size: 1.2rem; width: 32px; text-align: center; flex-shrink: 0; }
-        .back { background: none; border: none; color: rgba(30,30,30,0.35); font-size: 0.82rem; cursor: pointer; margin-top: 16px; padding: 6px 0; }
+        .back { background: none; border: none; color: rgba(30,30,30,0.55); font-size: 0.82rem; cursor: pointer; margin-top: 16px; padding: 6px 0; }
         .back:hover { color: rgba(30,30,30,0.6); }
         .glass { background: #ffffff; border-radius: 24px; padding: 32px 28px; margin-bottom: 20px; position: relative; box-shadow: 0 2px 16px rgba(0,0,0,0.04); }
         .glass-accent { display: none; }
@@ -871,7 +871,7 @@ export default function PlantWellnessQuiz() {
         .habitat-banner { padding: 24px; position: relative; }
         .habitat-eyebrow { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
         .habitat-name { font-size: 1.4rem; font-weight: 700; color: #2a2a2a; margin-bottom: 4px; }
-        .habitat-tagline { font-size: 0.78rem; color: rgba(30,30,30,0.45); }
+        .habitat-tagline { font-size: 0.78rem; color: rgba(30,30,30,0.65); }
         .habitat-body { padding: 0 24px 24px; }
         .habitat-desc { font-size: 0.86rem; color: rgba(30,30,30,0.6); line-height: 1.75; padding-top: 16px; }
         .habitat-section { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 20px; margin-bottom: 8px; }
@@ -887,18 +887,18 @@ export default function PlantWellnessQuiz() {
         .season-icon { font-size: 1.3rem; }
         .season-info { flex: 1; }
         .season-name { font-size: 0.9rem; font-weight: 600; color: rgba(30,30,30,0.85); }
-        .season-tagline { font-size: 0.72rem; color: rgba(30,30,30,0.4); }
+        .season-tagline { font-size: 0.72rem; color: rgba(30,30,30,0.6); }
         .season-peak { font-size: 0.55rem; font-weight: 600; padding: 2px 8px; border-radius: 100px; text-transform: uppercase; }
-        .season-chev { color: rgba(30,30,30,0.25); transition: transform 0.3s; }
+        .season-chev { color: rgba(30,30,30,0.5); transition: transform 0.3s; }
         .season-chev.open { transform: rotate(180deg); }
         .season-expand { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease; }
         .season-expand.open { max-height: 800px; opacity: 1; padding-top: 14px; }
         .season-detail { font-size: 0.82rem; color: rgba(30,30,30,0.55); line-height: 1.7; }
         .vit-title { font-size: 1.3rem; font-weight: 600; color: #2a2a2a; margin-bottom: 4px; }
-        .vit-sub { font-size: 0.8rem; color: rgba(30,30,30,0.45); margin-bottom: 20px; }
+        .vit-sub { font-size: 0.8rem; color: rgba(30,30,30,0.65); margin-bottom: 20px; }
         .vit-overall { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: rgba(0,0,0,0.02); border-radius: 16px; margin-bottom: 20px; }
         .vit-ov-icon { font-size: 1.8rem; }
-        .vit-ov-label { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(30,30,30,0.4); margin-bottom: 4px; }
+        .vit-ov-label { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(30,30,30,0.6); margin-bottom: 4px; }
         .vit-ov-row { display: flex; align-items: baseline; gap: 8px; }
         .vit-ov-score { font-size: 1.6rem; font-weight: 700; }
         .vit-ov-status { font-size: 0.78rem; font-weight: 500; }
@@ -911,44 +911,44 @@ export default function PlantWellnessQuiz() {
         .vit-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 3px; }
         .vit-name { font-size: 0.88rem; font-weight: 500; color: rgba(30,30,30,0.9); }
         .vit-badge { font-size: 0.6rem; font-weight: 600; padding: 2px 10px; border-radius: 100px; text-transform: uppercase; }
-        .vit-tip { font-size: 0.72rem; color: rgba(30,30,30,0.35); margin-bottom: 6px; }
+        .vit-tip { font-size: 0.72rem; color: rgba(30,30,30,0.55); margin-bottom: 6px; }
         .vit-track { height: 6px; background: rgba(0,0,0,0.04); border-radius: 6px; overflow: hidden; }
         .vit-fill { height: 100%; border-radius: 6px; transition: width 1.2s ease; }
-        .vit-chev { color: rgba(30,30,30,0.3); flex-shrink: 0; transition: transform 0.35s; }
+        .vit-chev { color: rgba(30,30,30,0.55); flex-shrink: 0; transition: transform 0.35s; }
         .vit-chev.open { transform: rotate(180deg); }
         .vit-expand { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease; padding: 0 12px 0 52px; }
         .vit-expand.open { max-height: 500px; opacity: 1; padding: 0 12px 16px 52px; }
         .vit-insight { font-size: 0.84rem; line-height: 1.65; padding: 14px 18px; border-radius: 12px; color: rgba(30,30,30,0.7); }
         .vit-sep { height: 1px; background: rgba(0,0,0,0.02); margin: 0 12px; }
         .spec-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-        .spec-name { font-size: 0.74rem; color: rgba(30,30,30,0.45); width: 76px; text-align: right; flex-shrink: 0; }
+        .spec-name { font-size: 0.74rem; color: rgba(30,30,30,0.65); width: 76px; text-align: right; flex-shrink: 0; }
         .spec-track { flex: 1; height: 6px; background: rgba(0,0,0,0.03); border-radius: 6px; overflow: hidden; }
         .spec-fill { height: 100%; border-radius: 6px; transition: width 1.2s ease; }
         .spec-icon { font-size: 0.9rem; width: 22px; text-align: center; }
-        .sec-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(30,30,30,0.35); margin: 24px 0 14px; }
+        .sec-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(30,30,30,0.55); margin: 24px 0 14px; }
         .sec-card { background: rgba(0,0,0,0.015); border-radius: 18px; padding: 20px 24px; margin-bottom: 12px; }
         .sec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
         .sec-ico { font-size: 1.5rem; }
         .sec-name { font-size: 1.1rem; font-weight: 600; color: #2a2a2a; }
-        .sec-core { font-size: 0.76rem; color: rgba(30,30,30,0.45); margin-bottom: 6px; }
+        .sec-core { font-size: 0.76rem; color: rgba(30,30,30,0.65); margin-bottom: 6px; }
         .sec-desc { font-size: 0.84rem; color: rgba(30,30,30,0.55); line-height: 1.6; }
-        .btn-again { background: transparent; color: rgba(30,30,30,0.45); border: 1px solid rgba(0,0,0,0.08); padding: 14px 32px; border-radius: 100px; font-size: 0.88rem; cursor: pointer; transition: all 0.3s; margin-right: 10px; }
+        .btn-again { background: transparent; color: rgba(30,30,30,0.65); border: 1px solid rgba(0,0,0,0.08); padding: 14px 32px; border-radius: 100px; font-size: 0.88rem; cursor: pointer; transition: all 0.3s; margin-right: 10px; }
         .btn-again:hover { border-color: #3d9b78; color: #3d9b78; }
         .btn-share { background: linear-gradient(135deg, #4aa87c, #3d9b78); color: white; border: none; padding: 14px 28px; border-radius: 100px; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; }
         .btn-share:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(74,168,124,0.2); }
         .share-toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%); background: white; color: #3d9b78; border: 1px solid rgba(74,168,124,0.25); padding: 14px 28px; border-radius: 100px; font-size: 0.84rem; font-weight: 500; z-index: 1000; box-shadow: 0 8px 32px rgba(0,0,0,0.08); animation: toastIn 0.3s ease; }
         @keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(12px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
-        .closing { text-align: center; margin-top: 36px; font-size: 0.78rem; color: rgba(30,30,30,0.3); line-height: 1.65; }
+        .closing { text-align: center; margin-top: 36px; font-size: 0.78rem; color: rgba(30,30,30,0.55); line-height: 1.65; }
         .enc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
         .enc-card { background: rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.06); border-radius: 14px; padding: 14px 12px; text-align: center; cursor: pointer; transition: all 0.25s; }
         .enc-card:hover { background: rgba(0,0,0,0.04); transform: translateY(-2px); }
         .enc-card.you { border-color: rgba(74,168,124,0.4); background: rgba(74,168,124,0.05); }
         .enc-icon { font-size: 1.6rem; margin-bottom: 6px; display: block; }
         .enc-name { font-size: 0.72rem; font-weight: 600; color: rgba(30,30,30,0.8); }
-        .enc-core { font-size: 0.62rem; color: rgba(30,30,30,0.4); margin-top: 2px; line-height: 1.3; }
+        .enc-core { font-size: 0.62rem; color: rgba(30,30,30,0.6); margin-top: 2px; line-height: 1.3; }
         .enc-cat { margin-top: 20px; }
-        .enc-cat-name { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(30,30,30,0.35); margin-bottom: 4px; }
-        .enc-cat-desc { font-size: 0.76rem; color: rgba(30,30,30,0.45); margin-bottom: 10px; }
+        .enc-cat-name { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(30,30,30,0.55); margin-bottom: 4px; }
+        .enc-cat-desc { font-size: 0.76rem; color: rgba(30,30,30,0.65); margin-bottom: 10px; }
         .plant-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: transparent; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
         .plant-modal.open { opacity: 1; pointer-events: auto; background: rgba(0,0,0,0.05); }
         .plant-modal-content { background: white; border-radius: 24px; max-width: 500px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0 25px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(0,0,0,0.08); }
@@ -966,7 +966,7 @@ export default function PlantWellnessQuiz() {
         .sem-btn-icon { font-size: 1.3rem; }
         .sem-btn-text { flex: 1; }
         .sem-btn-title { font-size: 0.88rem; font-weight: 600; color: rgba(30,30,30,0.85); }
-        .sem-btn-sub { font-size: 0.72rem; color: rgba(30,30,30,0.4); }
+        .sem-btn-sub { font-size: 0.72rem; color: rgba(30,30,30,0.6); }
         .sem-modal { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: transparent; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
         .sem-modal.open { opacity: 1; pointer-events: auto; background: rgba(0,0,0,0.05); }
         .sem-modal-content { background: white; border-radius: 24px; max-width: 560px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0 25px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(0,0,0,0.08); }
@@ -981,22 +981,22 @@ export default function PlantWellnessQuiz() {
         .sem-level-name { font-size: 0.95rem; font-weight: 600; color: rgba(30,30,30,0.85); }
         .sem-level-badge { font-size: 0.55rem; font-weight: 600; padding: 3px 10px; border-radius: 100px; text-transform: uppercase; margin-left: auto; }
         .sem-level-desc { font-size: 0.82rem; color: rgba(30,30,30,0.6); line-height: 1.65; margin-bottom: 10px; }
-        .sem-level-questions { font-size: 0.75rem; color: rgba(30,30,30,0.45); line-height: 1.5; font-style: italic; margin-bottom: 8px; }
+        .sem-level-questions { font-size: 0.75rem; color: rgba(30,30,30,0.65); line-height: 1.5; font-style: italic; margin-bottom: 8px; }
         .sem-level-examples { font-size: 0.75rem; color: rgba(30,30,30,0.5); line-height: 1.5; padding: 10px 12px; background: rgba(0,0,0,0.02); border-radius: 8px; }
         .sem-diagram { display: flex; flex-direction: column; align-items: center; gap: 4px; margin: 20px 0; }
         .sem-ring { border-radius: 100px; display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 600; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
         .enc-nav { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; padding: 10px 12px; background: rgba(255,255,255,0.85); border: 1px solid rgba(0,0,0,0.06); border-radius: 10px; margin-bottom: 16px; position: sticky; top: 10px; z-index: 10; backdrop-filter: blur(10px); }
-        .enc-nav-label { font-size: 0.68rem; color: rgba(30,30,30,0.35); font-weight: 500; }
+        .enc-nav-label { font-size: 0.68rem; color: rgba(30,30,30,0.55); font-weight: 500; }
         .enc-nav-btn { background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); padding: 5px 10px; border-radius: 100px; font-size: 0.72rem; font-weight: 500; color: rgba(30,30,30,0.6); cursor: pointer; transition: all 0.2s; }
         .enc-nav-btn:hover { background: rgba(74,168,124,0.1); border-color: rgba(74,168,124,0.25); color: #3d9b78; }
         .intro-links { margin-top: 40px; display: flex; flex-direction: column; gap: 10px; }
-        .intro-link { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; background: rgba(255,255,255,0.7); border: none; padding: 16px 18px; border-radius: 16px; cursor: pointer; transition: all 0.25s; color: rgba(30,30,30,0.4); }
+        .intro-link { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; background: rgba(255,255,255,0.7); border: none; padding: 16px 18px; border-radius: 16px; cursor: pointer; transition: all 0.25s; color: rgba(30,30,30,0.6); }
         .intro-link:hover { background: rgba(255,255,255,0.9); transform: translateX(4px); }
         .intro-link-icon { font-size: 1.4rem; }
         .intro-link-text { flex: 1; }
         .intro-link-title { font-size: 0.92rem; font-weight: 600; color: rgba(30,30,30,0.85); }
-        .intro-link-sub { font-size: 0.76rem; color: rgba(30,30,30,0.45); margin-top: 2px; }
-        .page-back { display: inline-flex; align-items: center; gap: 6px; background: none; border: none; color: rgba(30,30,30,0.4); font-size: 0.82rem; cursor: pointer; padding: 8px 0; margin-bottom: 20px; transition: color 0.2s; }
+        .intro-link-sub { font-size: 0.76rem; color: rgba(30,30,30,0.65); margin-top: 2px; }
+        .page-back { display: inline-flex; align-items: center; gap: 6px; background: none; border: none; color: rgba(30,30,30,0.6); font-size: 0.82rem; cursor: pointer; padding: 8px 0; margin-bottom: 20px; transition: color 0.2s; }
         .page-back:hover { color: rgba(30,30,30,0.7); }
         .page-title { font-size: 1.5rem; font-weight: 700; color: #2a2a2a; margin-bottom: 6px; }
         .page-sub { font-size: 0.84rem; color: rgba(30,30,30,0.5); line-height: 1.55; margin-bottom: 20px; }
@@ -1011,14 +1011,14 @@ export default function PlantWellnessQuiz() {
         .enc-full-cat { margin-top: 20px; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid rgba(0,0,0,0.06); }
         .enc-full-cat:first-child { margin-top: 0; }
         .enc-full-cat-name { font-size: 0.82rem; font-weight: 700; color: rgba(30,30,30,0.7); margin-bottom: 2px; }
-        .enc-full-cat-desc { font-size: 0.75rem; color: rgba(30,30,30,0.4); }
+        .enc-full-cat-desc { font-size: 0.75rem; color: rgba(30,30,30,0.6); }
         .sem-full-level { background: rgba(255,255,255,0.8); border: 1px solid rgba(0,0,0,0.08); border-radius: 18px; padding: 22px; margin-bottom: 14px; }
-        .result-link { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; background: rgba(0,0,0,0.02); border: none; padding: 14px 16px; border-radius: 14px; cursor: pointer; transition: all 0.25s; color: rgba(30,30,30,0.35); margin-bottom: 10px; }
+        .result-link { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; background: rgba(0,0,0,0.02); border: none; padding: 14px 16px; border-radius: 14px; cursor: pointer; transition: all 0.25s; color: rgba(30,30,30,0.55); margin-bottom: 10px; }
         .result-link:hover { background: rgba(0,0,0,0.05); transform: translateX(4px); }
         .result-link-icon { font-size: 1.2rem; }
         .result-link-text { flex: 1; }
         .result-link-title { font-size: 0.86rem; font-weight: 600; color: rgba(30,30,30,0.8); }
-        .result-link-sub { font-size: 0.72rem; color: rgba(30,30,30,0.4); margin-top: 1px; }
+        .result-link-sub { font-size: 0.72rem; color: rgba(30,30,30,0.6); margin-top: 1px; }
       `}</style>
 
       <div className="wrap">
@@ -1174,19 +1174,19 @@ export default function PlantWellnessQuiz() {
                       </div>
 
                       <div style={{ marginBottom: 16 }}>
-                        <div style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(30,30,30,0.4)", marginBottom: 6 }}>Signs you're in {s.name.toLowerCase()}</div>
+                        <div style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(30,30,30,0.6)", marginBottom: 6 }}>Signs you're in {s.name.toLowerCase()}</div>
                         <p className="season-detail">{s.signs}</p>
                       </div>
 
                       <div style={{ marginBottom: 16 }}>
-                        <div style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(30,30,30,0.4)", marginBottom: 8 }}>Reflections</div>
+                        <div style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(30,30,30,0.6)", marginBottom: 8 }}>Reflections</div>
                         {s.reflections.map((r, ri) => (
                           <p key={ri} style={{ fontSize: "0.84rem", color: "rgba(30,30,30,0.6)", lineHeight: 1.5, fontStyle: "italic", marginBottom: 6 }}>{r}</p>
                         ))}
                       </div>
 
                       <div>
-                        <div style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(30,30,30,0.4)", marginBottom: 8 }}>Habits for this season</div>
+                        <div style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(30,30,30,0.6)", marginBottom: 8 }}>Habits for this season</div>
                         {s.habits.map((h, hi) => (
                           <div key={hi} style={{ display: "flex", alignItems: "flex-start", gap: 8, marginBottom: 6 }}>
                             <span style={{ color: s.color, fontSize: "0.6rem", marginTop: 4 }}>●</span>
@@ -1387,7 +1387,7 @@ export default function PlantWellnessQuiz() {
                             <div className="enc-full-name">{p.name}{isYou ? " (You)" : ""}</div>
                             <div className="enc-full-core" style={{ color: p.color }}>{p.core}</div>
                           </div>
-                          <div style={{ color: "rgba(30,30,30,0.25)", transition: "transform 0.25s", transform: isExpanded ? "rotate(180deg)" : "rotate(0)" }}>
+                          <div style={{ color: "rgba(30,30,30,0.5)", transition: "transform 0.25s", transform: isExpanded ? "rotate(180deg)" : "rotate(0)" }}>
                             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                           </div>
                         </div>
@@ -1420,7 +1420,7 @@ export default function PlantWellnessQuiz() {
                             <p style={{ fontSize: "0.76rem", color: "rgba(30,30,30,0.55)", lineHeight: 1.5 }}>{p.resilience}</p>
                           </div>
 
-                          <div style={{ marginTop: 12, fontSize: "0.72rem", color: "rgba(30,30,30,0.4)" }}>
+                          <div style={{ marginTop: 12, fontSize: "0.72rem", color: "rgba(30,30,30,0.6)" }}>
                             Habitat: <HabitatIcon habitatKey={plantToHabitat[pk]} size={14} color={habitats[plantToHabitat[pk]].color} /> {habitats[plantToHabitat[pk]].name}
                           </div>
                         </div>
@@ -1445,7 +1445,7 @@ export default function PlantWellnessQuiz() {
                         <div className="enc-full-name">{h.name}{isYourHabitat ? " (Yours)" : ""}</div>
                         <div className="enc-full-core" style={{ color: h.color }}>{h.tagline}</div>
                       </div>
-                      <div style={{ color: "rgba(30,30,30,0.25)", transition: "transform 0.25s", transform: isExpanded ? "rotate(180deg)" : "rotate(0)" }}>
+                      <div style={{ color: "rgba(30,30,30,0.5)", transition: "transform 0.25s", transform: isExpanded ? "rotate(180deg)" : "rotate(0)" }}>
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       </div>
                     </div>
@@ -1469,7 +1469,7 @@ export default function PlantWellnessQuiz() {
                       </div>
 
                       <div style={{ marginTop: 12 }}>
-                        <div style={{ fontSize: "0.68rem", fontWeight: 600, color: "rgba(30,30,30,0.4)", marginBottom: 6 }}>Plants in this habitat</div>
+                        <div style={{ fontSize: "0.68rem", fontWeight: 600, color: "rgba(30,30,30,0.6)", marginBottom: 6 }}>Plants in this habitat</div>
                         <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                           {h.plants.map((pk) => {
                             const p = plantProfiles[pk];
@@ -1501,14 +1501,14 @@ export default function PlantWellnessQuiz() {
                         <div className="enc-full-name">{s.name}</div>
                         <div className="enc-full-core" style={{ color: s.color }}>{s.tagline}</div>
                       </div>
-                      <div style={{ color: "rgba(30,30,30,0.25)", transition: "transform 0.25s", transform: isExpanded ? "rotate(180deg)" : "rotate(0)" }}>
+                      <div style={{ color: "rgba(30,30,30,0.5)", transition: "transform 0.25s", transform: isExpanded ? "rotate(180deg)" : "rotate(0)" }}>
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                       </div>
                     </div>
 
                     <div style={{ maxHeight: isExpanded ? 600 : 0, overflow: "hidden", opacity: isExpanded ? 1 : 0, transition: "all 0.3s ease" }}>
                       <div style={{ marginTop: 8 }}>
-                        <div style={{ fontSize: "0.68rem", fontWeight: 600, color: "rgba(30,30,30,0.4)", marginBottom: 4 }}>Signs you're in {s.name.toLowerCase()}</div>
+                        <div style={{ fontSize: "0.68rem", fontWeight: 600, color: "rgba(30,30,30,0.6)", marginBottom: 4 }}>Signs you're in {s.name.toLowerCase()}</div>
                         <p className="enc-full-desc">{s.signs}</p>
                       </div>
 
