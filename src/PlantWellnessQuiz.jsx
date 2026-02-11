@@ -1133,7 +1133,7 @@ export default function PlantWellnessQuiz() {
                 <p className="habitat-detail">{result.habitat.offers}</p>
                 <div className="habitat-section" style={{ color: "#e0a070" }}><Warning size={14} weight="duotone" style={{ marginRight: 4, verticalAlign: "middle" }} /> Watch for</div>
                 <div className="habitat-callout" style={{ background: "rgba(224,160,112,0.06)", borderColor: "rgba(224,160,112,0.35)" }}>
-                  <p className="habitat-detail" style={{ color: "rgba(224,160,112,0.7)" }}>{result.habitat.watchFor}</p>
+                  <p className="habitat-detail" style={{ color: "#c4804a" }}>{result.habitat.watchFor}</p>
                 </div>
                 <div className="habitat-section" style={{ color: result.habitat.color }}>In real life, this looks like</div>
                 <p className="habitat-detail">{result.habitat.realWorld}</p>
