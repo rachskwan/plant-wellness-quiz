@@ -609,20 +609,21 @@ export default function PlantWellnessQuiz() {
     setEmailStatus("sending");
 
     try {
-      const pdf = await generatePDF();
-      if (!pdf) throw new Error("Failed to generate PDF");
-
-      // Convert PDF to base64 for sending via API
-      const pdfBase64 = pdf.output("datauristring").split(",")[1];
-
-      // Send to API endpoint
+      // Send results data to API endpoint
       const response = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
-          pdfBase64,
           plantName: result.primary.name,
+          plantIcon: result.primary.icon,
+          plantCore: result.primary.core,
+          plantDescription: result.primary.description,
+          habitatName: result.habitat.name,
+          habitatIcon: result.habitat.icon,
+          reflection: result.primary.reflection,
+          habits: result.primary.habits,
+          overallVitality,
         }),
       });
 
@@ -1132,7 +1133,7 @@ export default function PlantWellnessQuiz() {
             {/* Email Results */}
             <div className="email-section">
               <div className="email-title">Email Your Results</div>
-              <p className="email-sub">Get a PDF of your plant wellness report sent to your inbox</p>
+              <p className="email-sub">Get your plant wellness results sent to your inbox</p>
               <form onSubmit={handleSendEmail} className="email-form">
                 <input
                   type="email"
@@ -1143,7 +1144,7 @@ export default function PlantWellnessQuiz() {
                   required
                 />
                 <button type="submit" className="email-btn" disabled={emailStatus === "sending"}>
-                  {emailStatus === "sending" ? "Sending..." : emailStatus === "sent" ? "Sent!" : "Send PDF"}
+                  {emailStatus === "sending" ? "Sending..." : emailStatus === "sent" ? "Sent!" : "Email Results"}
                 </button>
               </form>
               {emailStatus === "sent" && (

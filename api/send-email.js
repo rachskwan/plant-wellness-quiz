@@ -19,11 +19,13 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const { email, pdfBase64, plantName } = req.body;
+    const { email, plantName, plantIcon, plantCore, plantDescription, habitatName, habitatIcon, reflection, habits, overallVitality } = req.body;
 
-    if (!email || !pdfBase64) {
-      return res.status(400).json({ error: 'Email and PDF are required' });
+    if (!email || !plantName) {
+      return res.status(400).json({ error: 'Email and plant name are required' });
     }
+
+    const habitsHtml = habits ? habits.map(h => `<li style="margin-bottom: 8px; color: #555;">${h}</li>`).join('') : '';
 
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -34,27 +36,48 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({
         from: 'Plant Wellness Quiz <onboarding@resend.dev>',
         to: email,
-        subject: `Your Plant Wellness Results: You're a ${plantName}!`,
+        subject: `${plantIcon} You're a ${plantName}! - Your Plant Wellness Results`,
         html: `
-          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-            <h1 style="color: #2a2a2a; font-size: 24px; margin-bottom: 16px;">Your Plant Wellness Results</h1>
-            <p style="color: #555; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
-              Thank you for taking the Plant Wellness Quiz! Based on your responses, you're a <strong>${plantName}</strong>.
-            </p>
-            <p style="color: #555; font-size: 16px; line-height: 1.6; margin-bottom: 24px;">
-              Your full results are attached as a PDF. This includes your plant type, habitat, seasonal growth patterns, and vitality report.
-            </p>
-            <p style="color: #888; font-size: 14px; line-height: 1.6;">
-              Wherever you are right now is a valid place to be. Growth isn't always visible, and rest is part of the cycle.
+          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; background: #f7f5f0;">
+            <div style="background: white; border-radius: 16px; padding: 32px; margin-bottom: 24px;">
+              <div style="text-align: center; margin-bottom: 24px;">
+                <span style="font-size: 48px;">${plantIcon}</span>
+                <h1 style="color: #2a2a2a; font-size: 28px; margin: 16px 0 8px;">You're a ${plantName}!</h1>
+                <p style="color: #6b8f71; font-size: 16px; margin: 0;">${plantCore}</p>
+              </div>
+
+              <p style="color: #555; font-size: 16px; line-height: 1.7; margin-bottom: 24px;">
+                ${plantDescription}
+              </p>
+
+              <div style="background: #f7f5f0; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+                <p style="color: #6b8f71; font-size: 14px; font-weight: 600; margin: 0 0 8px;">Reflect on this</p>
+                <p style="color: #555; font-size: 15px; font-style: italic; margin: 0; line-height: 1.6;">"${reflection}"</p>
+              </div>
+
+              ${habits ? `
+              <div style="margin-bottom: 24px;">
+                <p style="color: #6b8f71; font-size: 14px; font-weight: 600; margin: 0 0 12px;">Habits to try</p>
+                <ul style="margin: 0; padding-left: 20px; line-height: 1.7;">
+                  ${habitsHtml}
+                </ul>
+              </div>
+              ` : ''}
+
+              <div style="border-top: 1px solid #eee; padding-top: 20px;">
+                <p style="color: #888; font-size: 14px; margin: 0;">
+                  <strong>Your Habitat:</strong> ${habitatIcon} ${habitatName}<br>
+                  <strong>Overall Vitality:</strong> ${overallVitality}%
+                </p>
+              </div>
+            </div>
+
+            <p style="color: #888; font-size: 14px; text-align: center; line-height: 1.6;">
+              Wherever you are right now is a valid place to be.<br>
+              Growth isn't always visible, and rest is part of the cycle.
             </p>
           </div>
         `,
-        attachments: [
-          {
-            filename: `plant-wellness-results-${plantName.toLowerCase()}.pdf`,
-            content: pdfBase64,
-          },
-        ],
       }),
     });
 
