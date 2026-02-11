@@ -511,6 +511,38 @@ export default function PlantWellnessQuiz() {
   const goToPage = (page) => { setPrevStage(stage); setStage(page); };
   const goBack = () => setStage(prevStage);
 
+  // Check URL for shared results on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const encodedResults = params.get('r');
+    if (encodedResults) {
+      try {
+        const decoded = JSON.parse(atob(encodedResults));
+        if (decoded.indices && typeof decoded.indices === 'object') {
+          // Reconstruct answers from indices
+          const reconstructedAnswers = {};
+          Object.entries(decoded.indices).forEach(([qIndex, optionIndex]) => {
+            const q = questions[parseInt(qIndex)];
+            if (q && q.options[optionIndex]) {
+              reconstructedAnswers[qIndex] = q.options[optionIndex].scores;
+            }
+          });
+          setChosenIndices(decoded.indices);
+          setAnswers(reconstructedAnswers);
+          setStage("results");
+        }
+      } catch (e) {
+        console.error("Failed to decode results from URL");
+      }
+    }
+  }, []);
+
+  // Generate shareable results URL
+  const getShareableResultsUrl = () => {
+    const encoded = btoa(JSON.stringify({ indices: chosenIndices }));
+    return `${window.location.origin}${window.location.pathname}?r=${encoded}`;
+  };
+
   useEffect(() => { setFadeIn(false); const t = setTimeout(() => setFadeIn(true), 60); return () => clearTimeout(t); }, [currentQ, stage]);
   useEffect(() => { if (stage === "results") { const t = setTimeout(() => setResultRevealed(true), 500); return () => clearTimeout(t); } setResultRevealed(false); }, [stage]);
 
@@ -541,9 +573,9 @@ export default function PlantWellnessQuiz() {
   const getScoreDescription = (dim, score) => { if (score >= 80) return dim.thriving; if (score >= 55) return dim.growing; if (score >= 30) return dim.needsCare; return dim.dormant; };
 
   const handleShare = async () => {
-    const quizUrl = window.location.origin;
-    const text = `🌱 I took the Plant Wellness Quiz and I'm a ${result.primary.icon} ${result.primary.name}!\n\n"${result.primary.reflection}"\n\nTake the quiz and find your plant type: ${quizUrl}`;
-    if (navigator.share) { try { await navigator.share({ title: `I'm a ${result.primary.name}!`, text, url: quizUrl }); } catch {} }
+    const resultsUrl = getShareableResultsUrl();
+    const text = `🌱 I took the Plant Wellness Quiz and I'm a ${result.primary.icon} ${result.primary.name}!\n\n"${result.primary.reflection}"\n\nSee my results: ${resultsUrl}`;
+    if (navigator.share) { try { await navigator.share({ title: `I'm a ${result.primary.name}!`, text, url: resultsUrl }); } catch {} }
     else { try { await navigator.clipboard.writeText(text); setShareToast(true); setTimeout(() => setShareToast(false), 2500); } catch {} }
   };
 
@@ -629,6 +661,7 @@ export default function PlantWellnessQuiz() {
             habitat_icon: result.habitat.icon,
             reflection: result.primary.reflection,
             vitality: overallVitality,
+            results_link: getShareableResultsUrl(),
           },
         }),
       });
