@@ -628,29 +628,30 @@ export default function PlantWellnessQuiz() {
     setEmailStatus("sending");
 
     try {
-      // Send results data to API endpoint
-      const response = await fetch("/api/send-email", {
+      // Send email via EmailJS
+      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email,
-          plantName: result.primary.name,
-          plantIcon: result.primary.icon,
-          plantCore: result.primary.core,
-          plantDescription: result.primary.description,
-          habitatName: result.habitat.name,
-          habitatIcon: result.habitat.icon,
-          reflection: result.primary.reflection,
-          habits: result.primary.habits,
-          overallVitality,
+          service_id: "service_ikct7co",
+          template_id: "template_5an6s1r",
+          user_id: "w8wRJKPqXMYhtwIhA",
+          template_params: {
+            to_email: email,
+            plant_name: result.primary.name,
+            plant_icon: result.primary.icon,
+            plant_core: result.primary.core,
+            plant_description: result.primary.description,
+            habitat_name: result.habitat.name,
+            habitat_icon: result.habitat.icon,
+            reflection: result.primary.reflection,
+            vitality: overallVitality,
+          },
         }),
       });
 
-      const data = await response.json().catch(() => ({}));
-
       if (!response.ok) {
-        console.error("API error:", data);
-        throw new Error(data.error || data.details || "Failed to send email");
+        throw new Error("Failed to send email");
       }
 
       setEmailStatus("sent");
