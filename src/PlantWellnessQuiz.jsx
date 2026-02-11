@@ -693,7 +693,7 @@ export default function PlantWellnessQuiz() {
   const handleShare = async () => {
     const resultsUrl = getShareableResultsUrl();
     const quizUrl = window.location.origin + window.location.pathname;
-    const text = `${result.primary.icon} I just discovered I'm a ${result.primary.name}!\n\n${result.primary.core} — ${result.primary.description.slice(0, 120)}...\n\n👀 See my full results: ${resultsUrl}\n\n🌱 Take the Plant Wellness Quiz and find out what plant matches your wellness style: ${quizUrl}`;
+    const text = `I just discovered I'm a ${result.primary.name}!\n\n${result.primary.core} — ${result.primary.description.slice(0, 120)}...\n\nSee my full results: ${resultsUrl}\n\nTake the Plant Wellness Quiz and find out what plant matches your wellness style: ${quizUrl}`;
     if (navigator.share) { try { await navigator.share({ title: `I'm a ${result.primary.name}!`, text, url: quizUrl }); } catch {} }
     else { try { await navigator.clipboard.writeText(text); setShareToast(true); setTimeout(() => setShareToast(false), 2500); } catch {} }
   };
@@ -972,8 +972,8 @@ export default function PlantWellnessQuiz() {
         .enc-nav-btn { background: rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); padding: 5px 10px; border-radius: 100px; font-size: 0.72rem; font-weight: 500; color: rgba(30,30,30,0.6); cursor: pointer; transition: all 0.2s; }
         .enc-nav-btn:hover { background: rgba(74,168,124,0.1); border-color: rgba(74,168,124,0.25); color: #3d9b78; }
         .intro-links { margin-top: 40px; display: flex; flex-direction: column; gap: 10px; }
-        .intro-link { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.08); padding: 16px 18px; border-radius: 16px; cursor: pointer; transition: all 0.25s; color: rgba(30,30,30,0.4); }
-        .intro-link:hover { background: rgba(255,255,255,0.9); border-color: rgba(74,168,124,0.2); transform: translateX(4px); }
+        .intro-link { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; background: rgba(255,255,255,0.7); border: none; padding: 16px 18px; border-radius: 16px; cursor: pointer; transition: all 0.25s; color: rgba(30,30,30,0.4); }
+        .intro-link:hover { background: rgba(255,255,255,0.9); transform: translateX(4px); }
         .intro-link-icon { font-size: 1.4rem; }
         .intro-link-text { flex: 1; }
         .intro-link-title { font-size: 0.92rem; font-weight: 600; color: rgba(30,30,30,0.85); }
@@ -1187,7 +1187,7 @@ export default function PlantWellnessQuiz() {
               <div className="vit-title">Vitality Report</div>
               <div className="vit-sub">Tap each dimension to learn more</div>
               <div className="vit-overall">
-                <div className="vit-ov-icon">🌿</div>
+                <div className="vit-ov-icon"><Plant size={28} weight="duotone" color="#6b8f71" /></div>
                 <div style={{ flex: 1 }}>
                   <div className="vit-ov-label">Overall Vitality</div>
                   <div className="vit-ov-row">
