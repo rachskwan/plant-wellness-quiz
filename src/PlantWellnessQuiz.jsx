@@ -995,7 +995,7 @@ export default function PlantWellnessQuiz() {
         .enc-full-cat-name { font-size: 0.82rem; font-weight: 700; color: rgba(30,30,30,0.7); margin-bottom: 2px; }
         .enc-full-cat-desc { font-size: 0.75rem; color: rgba(30,30,30,0.4); }
         .sem-full-level { background: rgba(255,255,255,0.8); border: 1px solid rgba(0,0,0,0.08); border-radius: 18px; padding: 22px; margin-bottom: 14px; }
-        .result-link { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; background: rgba(0,0,0,0.02); padding: 14px 16px; border-radius: 14px; cursor: pointer; transition: all 0.25s; color: rgba(30,30,30,0.35); margin-bottom: 10px; }
+        .result-link { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; background: rgba(0,0,0,0.02); border: none; padding: 14px 16px; border-radius: 14px; cursor: pointer; transition: all 0.25s; color: rgba(30,30,30,0.35); margin-bottom: 10px; }
         .result-link:hover { background: rgba(0,0,0,0.05); transform: translateX(4px); }
         .result-link-icon { font-size: 1.2rem; }
         .result-link-text { flex: 1; }
