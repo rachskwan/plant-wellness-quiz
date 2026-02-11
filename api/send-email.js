@@ -1,7 +1,5 @@
 const { Resend } = require('resend');
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 module.exports = async function handler(req, res) {
   // Handle CORS
   res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -17,10 +15,22 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Check if API key is configured
-  if (!process.env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY is not configured');
-    return res.status(500).json({ error: 'Email service not configured' });
+  const apiKey = process.env.RESEND_API_KEY;
+
+  // Debug: Check if API key exists
+  if (!apiKey) {
+    return res.status(500).json({
+      error: 'API key not configured',
+      debug: 'RESEND_API_KEY environment variable is missing'
+    });
+  }
+
+  // Debug: Check API key format
+  if (!apiKey.startsWith('re_')) {
+    return res.status(500).json({
+      error: 'Invalid API key format',
+      debug: 'Key should start with re_'
+    });
   }
 
   try {
@@ -29,6 +39,8 @@ module.exports = async function handler(req, res) {
     if (!email || !pdfBase64) {
       return res.status(400).json({ error: 'Email and PDF are required' });
     }
+
+    const resend = new Resend(apiKey);
 
     const { data, error } = await resend.emails.send({
       from: 'Plant Wellness Quiz <onboarding@resend.dev>',
@@ -58,12 +70,19 @@ module.exports = async function handler(req, res) {
 
     if (error) {
       console.error('Resend error:', error);
-      return res.status(500).json({ error: 'Failed to send email', details: error.message });
+      return res.status(500).json({
+        error: 'Failed to send email',
+        details: error.message,
+        name: error.name
+      });
     }
 
     return res.status(200).json({ success: true, id: data.id });
   } catch (error) {
     console.error('Server error:', error);
-    return res.status(500).json({ error: 'Internal server error', details: error.message });
+    return res.status(500).json({
+      error: 'Internal server error',
+      details: error.message
+    });
   }
 };
