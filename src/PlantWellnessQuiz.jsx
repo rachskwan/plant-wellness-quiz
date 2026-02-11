@@ -574,8 +574,9 @@ export default function PlantWellnessQuiz() {
 
   const handleShare = async () => {
     const resultsUrl = getShareableResultsUrl();
-    const text = `🌱 I took the Plant Wellness Quiz and I'm a ${result.primary.icon} ${result.primary.name}!\n\n"${result.primary.reflection}"\n\nSee my results: ${resultsUrl}`;
-    if (navigator.share) { try { await navigator.share({ title: `I'm a ${result.primary.name}!`, text, url: resultsUrl }); } catch {} }
+    const quizUrl = window.location.origin + window.location.pathname;
+    const text = `${result.primary.icon} I just discovered I'm a ${result.primary.name}!\n\n${result.primary.core} — ${result.primary.description.slice(0, 120)}...\n\n👀 See my full results: ${resultsUrl}\n\n🌱 Take the Plant Wellness Quiz and find out what plant matches your wellness style: ${quizUrl}`;
+    if (navigator.share) { try { await navigator.share({ title: `I'm a ${result.primary.name}!`, text, url: quizUrl }); } catch {} }
     else { try { await navigator.clipboard.writeText(text); setShareToast(true); setTimeout(() => setShareToast(false), 2500); } catch {} }
   };
 
