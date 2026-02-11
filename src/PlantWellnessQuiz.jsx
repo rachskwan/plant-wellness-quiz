@@ -5,7 +5,8 @@ import {
   Cactus, FlowerTulip, TreePalm, Tree, OrangeSlice, Flower,
   Leaf, Plant, TreeEvergreen, FlowerLotus,
   Grains, Waves, Mountains, Sun, Snowflake,
-  Carrot, PottedPlant, Drop, Butterfly
+  Carrot, PottedPlant, Drop, Butterfly,
+  Flask, Warning, Check, ArrowCounterClockwise
 } from "@phosphor-icons/react";
 
 // Icon mapping for plants
@@ -36,7 +37,7 @@ const vitalityIcons = {
 // VitalityIcon component
 const VitalityIcon = ({ vitalityKey, size = 24, color, className = "" }) => {
   const IconComponent = vitalityIcons[vitalityKey];
-  if (!IconComponent) return <span style={{ fontSize: size }}>🌱</span>;
+  if (!IconComponent) return <Plant size={size} weight="duotone" color={color} className={className} />;
   return <IconComponent size={size} weight="duotone" color={color} className={className} />;
 };
 
@@ -59,21 +60,21 @@ const seasonIcons = {
 // PlantIcon component
 const PlantIcon = ({ plantKey, size = 24, color, className = "" }) => {
   const IconComponent = plantIcons[plantKey];
-  if (!IconComponent) return <span style={{ fontSize: size }}>🌱</span>;
+  if (!IconComponent) return <Plant size={size} weight="duotone" color={color} className={className} />;
   return <IconComponent size={size} weight="duotone" color={color} className={className} />;
 };
 
 // HabitatIcon component
 const HabitatIcon = ({ habitatKey, size = 24, color, className = "" }) => {
   const IconComponent = habitatIcons[habitatKey];
-  if (!IconComponent) return <span style={{ fontSize: size }}>🌿</span>;
+  if (!IconComponent) return <TreeEvergreen size={size} weight="duotone" color={color} className={className} />;
   return <IconComponent size={size} weight="duotone" color={color} className={className} />;
 };
 
 // SeasonIcon component
 const SeasonIcon = ({ seasonKey, size = 24, color, className = "" }) => {
   const IconComponent = seasonIcons[seasonKey];
-  if (!IconComponent) return <span style={{ fontSize: size }}>🌱</span>;
+  if (!IconComponent) return <Plant size={size} weight="duotone" color={color} className={className} />;
   return <IconComponent size={size} weight="duotone" color={color} className={className} />;
 };
 
@@ -963,7 +964,7 @@ export default function PlantWellnessQuiz() {
       <div className="wrap">
         {stage === "intro" && (
           <div className={`fade ${fadeIn ? "on" : ""}`}>
-            <div className="badge">🌱 Wellness Check-In</div>
+            <div className="badge"><Plant size={14} weight="duotone" style={{ marginRight: 4, verticalAlign: "middle" }} /> Wellness Check-In</div>
             <h1 className="title">How's your <span>inner garden</span> doing?</h1>
             <p className="sub">No right or wrong answers. Just a quiet moment to check in with yourself—like you'd check on a plant. 15 questions. About 4 minutes. You'll get a personalized plant profile, habitat, seasonal guidance, vitality report, and real habits to try.</p>
             <button className="btn" onClick={() => setStage("quiz")}>Let's start →</button>
@@ -978,7 +979,7 @@ export default function PlantWellnessQuiz() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
               </button>
               <button className="intro-link" onClick={() => goToPage("sem")}>
-                <span className="intro-link-icon">🔬</span>
+                <span className="intro-link-icon"><Flask size={16} weight="duotone" /></span>
                 <div className="intro-link-text">
                   <div className="intro-link-title">The Science Behind This</div>
                   <div className="intro-link-sub">Learn about the Socioecological Model</div>
@@ -1000,7 +1001,6 @@ export default function PlantWellnessQuiz() {
             <div>
               {questions[currentQ].options.map((opt, idx) => (
                 <button key={idx} className={`opt ${selectedOption === idx ? "sel" : ""}`} onClick={() => handleSelect(opt.scores, idx)} disabled={selectedOption !== null}>
-                  <span className="opt-emo">{opt.emoji}</span>
                   <span>{opt.text}</span>
                 </button>
               ))}
@@ -1024,7 +1024,7 @@ export default function PlantWellnessQuiz() {
               <p className="res-desc">{result.primary.description}</p>
 
               <div className="fun-fact">
-                <div className="fun-fact-icon">🔬</div>
+                <div className="fun-fact-icon"><Flask size={20} weight="duotone" /></div>
                 <div>
                   <div className="fun-fact-label" style={{ color: result.primary.color }}>Did you know?</div>
                   <div className="fun-fact-text">{result.primary.funFact}</div>
@@ -1070,7 +1070,7 @@ export default function PlantWellnessQuiz() {
                 <p className="habitat-desc">{result.habitat.description}</p>
                 <div className="habitat-section" style={{ color: result.habitat.color }}>What this habitat offers you</div>
                 <p className="habitat-detail">{result.habitat.offers}</p>
-                <div className="habitat-section" style={{ color: "#e0a070" }}>⚠ Watch for</div>
+                <div className="habitat-section" style={{ color: "#e0a070" }}><Warning size={14} weight="duotone" style={{ marginRight: 4, verticalAlign: "middle" }} /> Watch for</div>
                 <div className="habitat-callout" style={{ background: "rgba(224,160,112,0.06)", borderColor: "rgba(224,160,112,0.35)" }}>
                   <p className="habitat-detail" style={{ color: "rgba(224,160,112,0.7)" }}>{result.habitat.watchFor}</p>
                 </div>
@@ -1231,7 +1231,7 @@ export default function PlantWellnessQuiz() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
             </button>
             <button className="result-link" onClick={() => goToPage("sem")}>
-              <span className="result-link-icon">🔬</span>
+              <span className="result-link-icon"><Flask size={16} weight="duotone" /></span>
               <div className="result-link-text">
                 <div className="result-link-title">The Science Behind This</div>
                 <div className="result-link-sub">Learn about the Socioecological Model</div>
@@ -1273,10 +1273,10 @@ export default function PlantWellnessQuiz() {
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
                 Share results
               </button>
-              <button className="btn-again" onClick={restart}>🌱 Take it again</button>
+              <button className="btn-again" onClick={restart}><ArrowCounterClockwise size={14} weight="bold" style={{ marginRight: 4, verticalAlign: "middle" }} /> Take it again</button>
             </div>
 
-            {shareToast && <div className="share-toast">✓ Copied to clipboard!</div>}
+            {shareToast && <div className="share-toast"><Check size={14} weight="bold" style={{ marginRight: 4, verticalAlign: "middle" }} /> Copied to clipboard!</div>}
 
             <p className="closing">Wherever you are right now is a valid place to be.<br />Growth isn't always visible, and rest is part of the cycle.</p>
           </div>
@@ -1295,13 +1295,13 @@ export default function PlantWellnessQuiz() {
             <div className="enc-nav">
               <span className="enc-nav-label">Jump to:</span>
               <button className="enc-nav-btn" onClick={() => document.getElementById('enc-plants').scrollIntoView({ behavior: 'smooth' })}>
-                🌱 Plants
+                <Plant size={14} weight="duotone" style={{ marginRight: 4, verticalAlign: "middle" }} /> Plants
               </button>
               <button className="enc-nav-btn" onClick={() => document.getElementById('enc-habitats').scrollIntoView({ behavior: 'smooth' })}>
-                🏕️ Habitats
+                <Mountains size={14} weight="duotone" style={{ marginRight: 4, verticalAlign: "middle" }} /> Habitats
               </button>
               <button className="enc-nav-btn" onClick={() => document.getElementById('enc-seasons').scrollIntoView({ behavior: 'smooth' })}>
-                🍂 Seasons
+                <Leaf size={14} weight="duotone" style={{ marginRight: 4, verticalAlign: "middle" }} /> Seasons
               </button>
             </div>
 
@@ -1482,7 +1482,7 @@ export default function PlantWellnessQuiz() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
               Back
             </button>
-            <h1 className="page-title">🔬 The Science Behind This</h1>
+            <h1 className="page-title"><Flask size={24} weight="duotone" style={{ marginRight: 8, verticalAlign: "middle" }} /> The Science Behind This</h1>
             <p className="page-sub">This quiz is based on the Socioecological Model (SEM), a framework from public health that recognizes wellbeing is shaped by multiple levels—from individual choices to the systems we live within.</p>
 
             <div className="sem-diagram" style={{ marginBottom: 32 }}>
