@@ -4,7 +4,8 @@ import jsPDF from "jspdf";
 import {
   Cactus, FlowerTulip, TreePalm, Tree, OrangeSlice, Flower,
   Leaf, Plant, TreeEvergreen, FlowerLotus,
-  Grains, Waves, Mountains, Sun, Snowflake
+  Grains, Waves, Mountains, Sun, Snowflake,
+  Carrot, PottedPlant, Drop, Butterfly
 } from "@phosphor-icons/react";
 
 // Icon mapping for plants
@@ -18,9 +19,25 @@ const plantIcons = {
   vine: Leaf,
   moss: Plant,
   bonsai: TreeEvergreen,
-  mushroom: null, // Keep emoji
+  mushroom: Carrot, // Using Carrot as closest veggie icon
   maple: Leaf,
   lotus: FlowerLotus,
+};
+
+// Icon mapping for vitality dimensions
+const vitalityIcons = {
+  roots: Plant,
+  soil: PottedPlant,
+  sunlight: Sun,
+  water: Drop,
+  pollination: Butterfly,
+};
+
+// VitalityIcon component
+const VitalityIcon = ({ vitalityKey, size = 24, color, className = "" }) => {
+  const IconComponent = vitalityIcons[vitalityKey];
+  if (!IconComponent) return <span style={{ fontSize: size }}>🌱</span>;
+  return <IconComponent size={size} weight="duotone" color={color} className={className} />;
 };
 
 // Icon mapping for habitats
@@ -42,7 +59,7 @@ const seasonIcons = {
 // PlantIcon component
 const PlantIcon = ({ plantKey, size = 24, color, className = "" }) => {
   const IconComponent = plantIcons[plantKey];
-  if (!IconComponent) return <span style={{ fontSize: size }}>{plantKey === "mushroom" ? "🍄" : "🌱"}</span>;
+  if (!IconComponent) return <span style={{ fontSize: size }}>🌱</span>;
   return <IconComponent size={size} weight="duotone" color={color} className={className} />;
 };
 
@@ -1142,7 +1159,7 @@ export default function PlantWellnessQuiz() {
               {vitalityScores.map((dim, i) => (
                 <div key={dim.key}>
                   <div className="vit-row" onClick={() => setExpandedBars((p) => ({ ...p, [dim.key]: !p[dim.key] }))}>
-                    <div className="vit-icon">{dim.icon}</div>
+                    <div className="vit-icon"><VitalityIcon vitalityKey={dim.key} size={20} color={dim.color} /></div>
                     <div className="vit-info">
                       <div className="vit-header">
                         <div className="vit-name">{dim.label}</div>
