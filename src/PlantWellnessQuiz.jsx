@@ -1151,6 +1151,7 @@ export default function PlantWellnessQuiz() {
             <div className="glass">
               <div className="vit-title">Seasonal Growth</div>
               <div className="vit-sub">How your {result.primary.name} operates through the growth cycle</div>
+              <p style={{ fontSize: "0.76rem", color: "rgba(30,30,30,0.55)", lineHeight: 1.6, marginBottom: 16, fontStyle: "italic" }}>These seasons represent phases of energy and growth in your life—not calendar seasons. You might be in a "winter" of rest during summer, or a "spring" of new beginnings in October.</p>
               {Object.values(seasons).map((s) => {
                 const isOpen = expandedSeason === s.key;
                 const isPeak = plantSeasons[result.primary.key].peakSeason === s.key;
@@ -1490,7 +1491,8 @@ export default function PlantWellnessQuiz() {
 
             {/* Seasons Section */}
             <div id="enc-seasons" style={{ marginBottom: 32, scrollMarginTop: 20 }}>
-              <h2 style={{ fontSize: "1rem", fontWeight: 700, color: "#2a2a2a", marginBottom: 12 }}>The Four Seasons</h2>
+              <h2 style={{ fontSize: "1rem", fontWeight: 700, color: "#2a2a2a", marginBottom: 8 }}>The Four Seasons</h2>
+              <p style={{ fontSize: "0.76rem", color: "rgba(30,30,30,0.55)", lineHeight: 1.6, marginBottom: 16, fontStyle: "italic" }}>These seasons represent phases of energy and growth—not calendar seasons. You might be in "winter" during summer, or "spring" in October.</p>
               {Object.values(seasons).map((s) => {
                 const isExpanded = expandedEncSeason === s.key;
                 return (
