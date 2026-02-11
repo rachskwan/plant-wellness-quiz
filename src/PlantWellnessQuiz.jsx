@@ -547,14 +547,16 @@ export default function PlantWellnessQuiz() {
   const generatePDF = async () => {
     if (!resultsRef.current) return null;
 
+    // Capture at higher resolution for better quality
     const canvas = await html2canvas(resultsRef.current, {
-      scale: 2,
+      scale: 3,
       useCORS: true,
       backgroundColor: "#f7f5f0",
       logging: false,
+      windowWidth: 800,
     });
 
-    const imgData = canvas.toDataURL("image/png");
+    const imgData = canvas.toDataURL("image/png", 1.0);
     const pdf = new jsPDF({
       orientation: "portrait",
       unit: "mm",
@@ -563,23 +565,42 @@ export default function PlantWellnessQuiz() {
 
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = pdf.internal.pageSize.getHeight();
+    const margin = 10; // 10mm margin on each side
+    const contentWidth = pdfWidth - (margin * 2);
+
+    // Scale image to fill the page width (minus margins)
     const imgWidth = canvas.width;
     const imgHeight = canvas.height;
-    const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-    const imgX = (pdfWidth - imgWidth * ratio) / 2;
+    const ratio = contentWidth / imgWidth;
+    const scaledHeight = imgHeight * ratio;
 
     // Add pages as needed for long content
-    let heightLeft = imgHeight * ratio;
-    let position = 0;
-
-    pdf.addImage(imgData, "PNG", imgX, position, imgWidth * ratio, imgHeight * ratio);
-    heightLeft -= pdfHeight;
+    let heightLeft = scaledHeight;
+    let position = margin;
+    let srcY = 0;
+    const pageContentHeight = pdfHeight - (margin * 2);
 
     while (heightLeft > 0) {
-      position = heightLeft - imgHeight * ratio;
-      pdf.addPage();
-      pdf.addImage(imgData, "PNG", imgX, position, imgWidth * ratio, imgHeight * ratio);
-      heightLeft -= pdfHeight;
+      if (srcY > 0) {
+        pdf.addPage();
+        position = margin;
+      }
+
+      // Calculate how much of the source image to use for this page
+      const sliceHeight = Math.min(pageContentHeight / ratio, imgHeight - srcY);
+
+      // Create a temporary canvas for this page slice
+      const tempCanvas = document.createElement("canvas");
+      tempCanvas.width = imgWidth;
+      tempCanvas.height = sliceHeight;
+      const ctx = tempCanvas.getContext("2d");
+      ctx.drawImage(canvas, 0, srcY, imgWidth, sliceHeight, 0, 0, imgWidth, sliceHeight);
+
+      const sliceData = tempCanvas.toDataURL("image/png", 1.0);
+      pdf.addImage(sliceData, "PNG", margin, position, contentWidth, sliceHeight * ratio);
+
+      srcY += sliceHeight;
+      heightLeft -= pageContentHeight;
     }
 
     return pdf;
