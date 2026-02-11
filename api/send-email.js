@@ -1,4 +1,4 @@
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   // Handle CORS
   res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -26,7 +26,6 @@ module.exports = async function handler(req, res) {
       return res.status(400).json({ error: 'Email and PDF are required' });
     }
 
-    // Use fetch directly instead of Resend SDK
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -76,4 +75,4 @@ module.exports = async function handler(req, res) {
       details: error.message
     });
   }
-};
+}
