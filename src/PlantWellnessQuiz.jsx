@@ -548,57 +548,52 @@ export default function PlantWellnessQuiz() {
   const generatePDF = async () => {
     if (!resultsRef.current) return null;
 
-    // Capture at higher resolution for better quality
+    // Capture at moderate resolution for balance of quality and size
     const canvas = await html2canvas(resultsRef.current, {
-      scale: 3,
+      scale: 1.5,
       useCORS: true,
       backgroundColor: "#f7f5f0",
       logging: false,
-      windowWidth: 800,
+      windowWidth: 600,
     });
 
-    const imgData = canvas.toDataURL("image/png", 1.0);
     const pdf = new jsPDF({
       orientation: "portrait",
       unit: "mm",
       format: "a4",
+      compress: true,
     });
 
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = pdf.internal.pageSize.getHeight();
-    const margin = 10; // 10mm margin on each side
+    const margin = 8;
     const contentWidth = pdfWidth - (margin * 2);
 
-    // Scale image to fill the page width (minus margins)
     const imgWidth = canvas.width;
     const imgHeight = canvas.height;
     const ratio = contentWidth / imgWidth;
     const scaledHeight = imgHeight * ratio;
 
-    // Add pages as needed for long content
     let heightLeft = scaledHeight;
-    let position = margin;
     let srcY = 0;
     const pageContentHeight = pdfHeight - (margin * 2);
 
     while (heightLeft > 0) {
       if (srcY > 0) {
         pdf.addPage();
-        position = margin;
       }
 
-      // Calculate how much of the source image to use for this page
       const sliceHeight = Math.min(pageContentHeight / ratio, imgHeight - srcY);
 
-      // Create a temporary canvas for this page slice
       const tempCanvas = document.createElement("canvas");
       tempCanvas.width = imgWidth;
       tempCanvas.height = sliceHeight;
       const ctx = tempCanvas.getContext("2d");
       ctx.drawImage(canvas, 0, srcY, imgWidth, sliceHeight, 0, 0, imgWidth, sliceHeight);
 
-      const sliceData = tempCanvas.toDataURL("image/png", 1.0);
-      pdf.addImage(sliceData, "PNG", margin, position, contentWidth, sliceHeight * ratio);
+      // Use JPEG with 0.7 quality for smaller file size
+      const sliceData = tempCanvas.toDataURL("image/jpeg", 0.7);
+      pdf.addImage(sliceData, "JPEG", margin, margin, contentWidth, sliceHeight * ratio);
 
       srcY += sliceHeight;
       heightLeft -= pageContentHeight;
