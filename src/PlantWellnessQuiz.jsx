@@ -595,24 +595,31 @@ export default function PlantWellnessQuiz() {
       const pdf = await generatePDF();
       if (!pdf) throw new Error("Failed to generate PDF");
 
-      // Generate the PDF blob for download
-      const pdfBlob = pdf.output("blob");
-      const pdfUrl = URL.createObjectURL(pdfBlob);
+      // Convert PDF to base64 for sending via API
+      const pdfBase64 = pdf.output("datauristring").split(",")[1];
 
-      // Since we don't have a backend, we'll download the PDF and show a message
-      // In production, you'd send this to your backend API which would email it
-      const link = document.createElement("a");
-      link.href = pdfUrl;
-      link.download = `plant-wellness-results-${result.primary.name.toLowerCase()}.pdf`;
-      link.click();
-      URL.revokeObjectURL(pdfUrl);
+      // Send to API endpoint
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          pdfBase64,
+          plantName: result.primary.name,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send email");
+      }
 
       setEmailStatus("sent");
-      setTimeout(() => setEmailStatus(null), 4000);
+      setEmail("");
+      setTimeout(() => setEmailStatus(null), 5000);
     } catch (err) {
       console.error(err);
       setEmailStatus("error");
-      setTimeout(() => setEmailStatus(null), 3000);
+      setTimeout(() => setEmailStatus(null), 4000);
     }
   };
 
@@ -1104,8 +1111,8 @@ export default function PlantWellnessQuiz() {
 
             {/* Email Results */}
             <div className="email-section">
-              <div className="email-title">Save Your Results</div>
-              <p className="email-sub">Download a PDF of your plant wellness report</p>
+              <div className="email-title">Email Your Results</div>
+              <p className="email-sub">Get a PDF of your plant wellness report sent to your inbox</p>
               <form onSubmit={handleSendEmail} className="email-form">
                 <input
                   type="email"
@@ -1116,14 +1123,14 @@ export default function PlantWellnessQuiz() {
                   required
                 />
                 <button type="submit" className="email-btn" disabled={emailStatus === "sending"}>
-                  {emailStatus === "sending" ? "Generating..." : emailStatus === "sent" ? "Downloaded!" : "Download PDF"}
+                  {emailStatus === "sending" ? "Sending..." : emailStatus === "sent" ? "Sent!" : "Send PDF"}
                 </button>
               </form>
               {emailStatus === "sent" && (
-                <p className="email-success">Your PDF has been downloaded!</p>
+                <p className="email-success">Check your inbox! Your results are on the way.</p>
               )}
               {emailStatus === "error" && (
-                <p className="email-error">Something went wrong. Please try again.</p>
+                <p className="email-error">Couldn't send email. Please try again.</p>
               )}
             </div>
 
