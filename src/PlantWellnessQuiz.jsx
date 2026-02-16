@@ -642,6 +642,7 @@ export default function PlantWellnessQuiz() {
   const [prevStage, setPrevStage] = useState("intro");
   const [email, setEmail] = useState("");
   const [emailStatus, setEmailStatus] = useState(null); // null, "sending", "sent", "error"
+  const [emailConsent, setEmailConsent] = useState(false);
   const resultsRef = useRef(null);
 
   const goToPage = (page) => { setPrevStage(stage); setStage(page); };
@@ -809,6 +810,7 @@ export default function PlantWellnessQuiz() {
 
       setEmailStatus("sent");
       setEmail("");
+      setEmailConsent(false);
       setTimeout(() => setEmailStatus(null), 5000);
     } catch (err) {
       console.error("Email error:", err);
@@ -1047,6 +1049,8 @@ export default function PlantWellnessQuiz() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
               </button>
             </div>
+
+            <p className="powered-by">Powered by <strong>Dalton Bioanalytics</strong></p>
           </div>
         )}
 
@@ -1308,18 +1312,30 @@ export default function PlantWellnessQuiz() {
             <div className="email-section">
               <div className="email-title">Email Your Results</div>
               <p className="email-sub">Get your plant wellness results sent to your inbox</p>
+              <p className="email-powered">Powered by <strong>Dalton Bioanalytics</strong> — we also offer a blood wellness testing kit. Subscribe to receive your plant results and information about our testing kit.</p>
               <form onSubmit={handleSendEmail} className="email-form">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="email-input"
-                  required
-                />
-                <button type="submit" className="email-btn" disabled={emailStatus === "sending"}>
-                  {emailStatus === "sending" ? "Sending..." : emailStatus === "sent" ? "Sent!" : "Email Results"}
-                </button>
+                <label className="email-consent">
+                  <input
+                    type="checkbox"
+                    checked={emailConsent}
+                    onChange={(e) => setEmailConsent(e.target.checked)}
+                    required
+                  />
+                  <span>I agree to receive my plant wellness results and information about the Dalton Bioanalytics blood wellness testing kit.</span>
+                </label>
+                <div>
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="email-input"
+                    required
+                  />
+                  <button type="submit" className="email-btn" disabled={emailStatus === "sending" || !emailConsent}>
+                    {emailStatus === "sending" ? "Sending..." : emailStatus === "sent" ? "Sent!" : "Email Results"}
+                  </button>
+                </div>
               </form>
               {emailStatus === "sent" && (
                 <p className="email-success">Check your inbox! Your results are on the way.</p>

@@ -39,14 +39,47 @@ body {
 .email-sub {
   font-size: 0.84rem;
   color: rgba(30,30,30,0.5);
+  margin-bottom: 8px;
+}
+
+.email-powered {
+  font-size: 0.82rem;
+  color: rgba(30,30,30,0.6);
   margin-bottom: 16px;
+  line-height: 1.5;
 }
 
 .email-form {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 12px;
   max-width: 380px;
   margin: 0 auto;
+}
+
+.email-form > div {
+  display: flex;
+  gap: 10px;
+}
+
+.email-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  font-size: 0.78rem;
+  color: rgba(30,30,30,0.65);
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.email-consent input[type="checkbox"] {
+  margin-top: 2px;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  accent-color: #4aa87c;
+  cursor: pointer;
 }
 
 .email-input {
@@ -106,4 +139,12 @@ body {
   font-size: 0.84rem;
   color: #e07070;
   font-weight: 500;
+}
+
+/* Powered By */
+.powered-by {
+  margin-top: 32px;
+  font-size: 0.8rem;
+  color: rgba(30,30,30,0.45);
+  text-align: center;
 }
