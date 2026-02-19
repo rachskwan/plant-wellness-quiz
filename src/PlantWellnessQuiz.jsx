@@ -270,23 +270,23 @@ const questions = [
     ],
   },
   {
-    id: 14, section: "The Horizon",
-    question: "You cross the meadow and reach the far edge where the land drops away. Miles of open country. Past the next season, past the next year. What's the thing on that horizon that keeps pulling you forward?",
-    options: [
-      { text: "A tree others can rest under — being dependable and present for my people", emoji: "🌳", scores: { oak: 4, fruitTree: 2 } },
-      { text: "A forest I'm planting now — building something that outlasts me", emoji: "🏔️", scores: { mushroom: 4, lotus: 2 } },
-      { text: "A meadow in full bloom — creating joy and sharing it with others", emoji: "🌺", scores: { wildflower: 3, maple: 4 } },
-      { text: "One perfect tree — mastering my craft with nothing wasted", emoji: "✂️", scores: { bonsai: 3, orchid: 3 } },
-    ],
-  },
-  {
-    id: 15, section: "The Dry Season",
+    id: 14, section: "The Dry Season",
     question: "One last stretch. The trail turns downhill and the landscape dries out — cracked soil, no shade. Everything is scarce: time, energy, money, support. What do you do when there isn't enough?",
     options: [
       { text: "I find hidden water — I get creative and find resources others miss", emoji: "🌾", scores: { bamboo: 3, vine: 3 } },
       { text: "I close up and go small — I cut back to essentials and endure", emoji: "🌵", scores: { succulent: 4, mushroom: 2 } },
       { text: "I share my water — I lean on my people and we get through it together", emoji: "💛", scores: { wildflower: 3, fruitTree: 2, maple: 2 } },
       { text: "I keep walking at the same pace — drought or not, I don't change", emoji: "🍃", scores: { moss: 4, oak: 2 } },
+    ],
+  },
+  {
+    id: 15, section: "The Horizon",
+    question: "You cross the meadow and reach the far edge where the land drops away. Miles of open country. Past the next season, past the next year. What's the thing on that horizon that keeps pulling you forward?",
+    options: [
+      { text: "A tree others can rest under — being dependable and present for my people", emoji: "🌳", scores: { oak: 4, fruitTree: 2 } },
+      { text: "A forest I'm planting now — building something that outlasts me", emoji: "🏔️", scores: { mushroom: 4, lotus: 2 } },
+      { text: "A meadow in full bloom — creating joy and sharing it with others", emoji: "🌺", scores: { wildflower: 3, maple: 4 } },
+      { text: "One perfect tree — mastering my craft with nothing wasted", emoji: "✂️", scores: { bonsai: 3, orchid: 3 } },
     ],
   },
 ];
